@@ -126,7 +126,7 @@ allyours-ngo/
 
 ## Support
 
-For support, email [contact@allyoursngo.org] or create an issue in this repository.
+For support, email or create an issue in this repository.
 
 ## License
 
