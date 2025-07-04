@@ -1,0 +1,19 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "cSpell.ignorePaths": [
+    "./node_modules/**",
+    "./dist/**",
+    "./build/**",
+    "./public/**",
+    "./.vscode/**",
+    "./.github/**",
+    "./package.json/**",
+    "./package-lock.json/**",
+    "./.idea"
+  ]
+}
