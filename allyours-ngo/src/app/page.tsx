@@ -1,3 +1,4 @@
+
 import Section3 from "@/components/Section3";
 import Section4 from "@/components/Section4";
 import Section5 from "@/components/Section5";
@@ -20,4 +21,4 @@ export default function Home() {
       <Section7/>
     </div>
   );
-} 
+}

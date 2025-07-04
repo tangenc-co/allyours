@@ -9,7 +9,7 @@ export default function Section2(){
             <div className="flex justify-around w-[1121px] h-[374px] mx-auto">
                 <div>
                     <div>
-                        <p className="w-[188px] h-[22px] sfprobold">Join With Us </p>
+                        <p className="w-[188px] h-[22px] sfprobold">Join With Us  </p>
                         <p className="text-[48px] mb-[30px] font-[500] text-[#005cff] morangamd">For you and for all of us</p>
                     </div>
                     
