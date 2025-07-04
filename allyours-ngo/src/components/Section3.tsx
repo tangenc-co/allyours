@@ -1,64 +1,57 @@
-"use client";
-import Image from 'next/image';
-import frontPeekaboo from '../../public/assets/Illustration.SVG/peekaboo illustration front.svg';
-import backPeekaboo from '../../public/assets/Illustration.SVG/peekaboo illustration back.svg';
+'use client'
+import Image from 'next/image'
+import frontPeekaboo from '../../public/assets/Illustration.SVG/peekaboo illustration front.svg'
+import backPeekaboo from '../../public/assets/Illustration.SVG/peekaboo illustration back.svg'
 
-import CurvedSlider from './subcomponents/CurvedSlider';
-import { Marquee } from './subcomponents/Marquee';
+import CurvedSlider from './subcomponents/CurvedSlider'
+import { Marquee } from './subcomponents/Marquee'
 
 const slides: string[] = [
-  "/assets/Images/peekaboo Image 1.jpg",
-  "/assets/Images/peekaboo Image 2.jpg",
-  "/assets/Images/peekaboo Image 3.jpg",
-  "/assets/Images/peekaboo Image 4.jpg",
-  "/assets/Images/peekaboo Image 5.jpg",
+  '/assets/Images/peekaboo Image 1.jpg',
+  '/assets/Images/peekaboo Image 2.jpg',
+  '/assets/Images/peekaboo Image 3.jpg',
+  '/assets/Images/peekaboo Image 4.jpg',
+  '/assets/Images/peekaboo Image 5.jpg',
 
-  "/assets/Images/peekaboo Image 1.jpg",
-  "/assets/Images/peekaboo Image 2.jpg",
-  "/assets/Images/peekaboo Image 3.jpg",
-  "/assets/Images/peekaboo Image 4.jpg",
-  "/assets/Images/peekaboo Image 5.jpg",
-
-
-];
+  '/assets/Images/peekaboo Image 1.jpg',
+  '/assets/Images/peekaboo Image 2.jpg',
+  '/assets/Images/peekaboo Image 3.jpg',
+  '/assets/Images/peekaboo Image 4.jpg',
+  '/assets/Images/peekaboo Image 5.jpg',
+]
 
 export default function Section3() {
   return (
-    <div className="min-h-screen w-full">
-      <div className="text-center flex flex-col items-center justify-between h-[235px] py-8 mb-[-220px] mt-[40px]">
+    <div className='min-h-screen w-full'>
+      <div className='text-center flex flex-col items-center justify-between h-[235px] py-8 mb-[-220px] mt-[40px]'>
         <div className='flex justify-evenly'>
-          <Image 
-            src={frontPeekaboo} 
-            alt="Peekaboo illustration"
-            width={48} 
+          <Image
+            src={frontPeekaboo}
+            alt='Peekaboo illustration'
+            width={48}
             height={48}
-            className="mr-[10px] mt-[2px]"  
+            className='mr-[10px] mt-[2px]'
           />
-          <h1 className="text-[#fe6835] text-[48px]/[68px] mt-4 morangarg">Design Thinking Jam Peekaboo</h1>
-          <Image 
-            src={backPeekaboo} 
-            alt="Peekaboo illustration"
-            width={48} 
-            height={48}
-            className="ml-[10px] mt-[2px]"  
-          />
+          <h1 className='text-[#fe6835] text-[48px]/[68px] mt-4 morangarg'>Design Thinking Jam Peekaboo</h1>
+          <Image src={backPeekaboo} alt='Peekaboo illustration' width={48} height={48} className='ml-[10px] mt-[2px]' />
         </div>
-        <p className=" w-full max-w-[1258px] text-center text-gray-800 text-[20px]/[30px] p-4 sfprorg">
-          Peekaboo by allyours assemble creatives and enthusiasts to explore the integration of art and design into daily lives.
-          The 1st Peekaboo Event and the 2nd Peekaboo Design Jam both connected the participants in a lively atmosphere, a vibrant and immersive experience.
+        <p className=' w-full max-w-[1258px] text-center text-gray-800 text-[20px]/[30px] p-4 sfprorg'>
+          Peekaboo by allyours assemble creatives and enthusiasts to explore the integration of art and design into
+          daily lives. The 1st Peekaboo Event and the 2nd Peekaboo Design Jam both connected the participants in a
+          lively atmosphere, a vibrant and immersive experience.
         </p>
-        <div className="flex justify-between w-[262px] h-[47px] mx-auto bg-[#fff] mt-4">
-          <button className="py-[14px] px-[24px] rounded-[24px] border-none w-[116px] h-[47px] cursor-pointer text-[#fff] bg-[#fe6835] text-[16px] hover:bg-[#e55b2d] transition-colors">
+        <div className='flex justify-between w-[262px] h-[47px] mx-auto bg-[#fff] mt-4'>
+          <button className='py-[14px] px-[24px] rounded-[24px] border-none w-[116px] h-[47px] cursor-pointer text-[#fff] bg-[#fe6835] text-[16px] hover:bg-[#e55b2d] transition-colors'>
             Join Now
           </button>
-          <button className="rounded-[24px] border-[0.4px] border-solid w-[130px] h-[47px] cursor-pointer text-[#000] bg-[#fff] text-[16px] hover:bg-gray-100 transition-colors">
+          <button className='rounded-[24px] border-[0.4px] border-solid w-[130px] h-[47px] cursor-pointer text-[#000] bg-[#fff] text-[16px] hover:bg-gray-100 transition-colors'>
             Know More
           </button>
         </div>
       </div>
 
       <CurvedSlider images={slides} />
-      <Marquee/>
+      <Marquee />
     </div>
-  );
+  )
 }

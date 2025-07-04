@@ -5,8 +5,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
---vertical-padding: 64px;
+:root {
+  --vertical-padding: 64px;
 }
 
 * {
@@ -54,18 +54,18 @@
   font-display: swap;
 }
 
-.morangamd{
+.morangamd {
   font-family: 'morangamd', sans-serif;
 }
-.morangarg{
+.morangarg {
   font-family: 'morangarg', sans-serif;
 }
-.sfprobold{
+.sfprobold {
   font-family: 'sfprobold', sans-serif;
 }
-.sfpromd{
+.sfpromd {
   font-family: 'sfpromd', sans-serif;
 }
-.sfprorg{
+.sfprorg {
   font-family: 'sfprorg', sans-serif;
 }
