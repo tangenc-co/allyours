@@ -111,7 +111,7 @@ export default function Section4() {
           </div>
         </div>
         <div className='mx-auto flex items-center mt-[24px]'>
-          <button className='py-[14px] px-[24px]rounded rounded-[24px] border-none w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#AA16FF] text-[16px]/auto mx-auto sfprorg'>
+          <button className='py-[10px] px-[14px] rounded rounded-[24px] border-none w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#AA16FF] text-[16px]/auto mx-auto sfprorg'>
             View On YouTube
           </button>
         </div>

@@ -74,7 +74,7 @@ export default function Section6() {
               alt='Peekaboo illustration'
               width={35}
               height={35}
-              className='bg-[#005cff] p-[10px] rounded-[30px]'
+              className='bg-[#005cff] p-[5px] rounded-[30px]'
             />
             <span className='sfprobold  text-[16px]'>Click To Apply</span>
           </div>

@@ -3,7 +3,7 @@ export default function Hero() {
   return (
     <div className='min-h-screen max-w-[1213px] mx-auto'>
       <div className='text-center mt-[50px] max-w-[1104px] mx-auto mb-[100px]'>
-        <p className='text-[68px]/[80px] mb-[-10px] bg-[#fff] morangamd mb-[30px]'>
+        <p className='text-[68px]/[80px] mb-[-10px] morangamd mb-[30px]'>
           Cultivating Creative Minds Retaining Design Intelligence
         </p>
         <p className='text-[20px]/[30px] textgray sfprorg mb-[30px]'>
@@ -12,10 +12,10 @@ export default function Hero() {
           beginning from today. 
         </p>
         <div className='flex justify-around max-w-[400px] mx-auto'>
-          <button className='py-[14px] px-[24px]rounded rounded-[24px] border-none w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#005cff] text-[16px]/auto'>
+          <button className='py-[10px] px-[14px] rounded rounded-[24px] border-none w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#005cff] text-[16px]/auto'>
             Join Our Programs
           </button>
-          <button className='rounded-[24px] border-[0.4px] border-solid w-[183px] h-[47px] cursor-pointer text-[#000] bg-[#fff] text-[16px]'>
+          <button className='rounded-[24px] border-[1px] border-solid border-[#b6b6b6] w-[183px] h-[47px] cursor-pointer text-[#000] bg-[#fff] text-[16px]'>
             Learn More
           </button>
         </div>
@@ -31,7 +31,7 @@ export default function Hero() {
             alt='Peekaboo illustration'
             width={329.92}
             height={329.92}
-            className=''
+            className="transition-transform duration-300 hover:rotate-[15deg]"
           />
         </div>
         <div>
@@ -44,7 +44,7 @@ export default function Hero() {
             alt='Peekaboo illustration'
             width={329.92}
             height={329.92}
-            className=''
+            className="transition-transform duration-300 hover:rotate-[15deg]"
           />
         </div>
         <div>
@@ -57,7 +57,7 @@ export default function Hero() {
             alt='Peekaboo illustration'
             width={349.92}
             height={349.92}
-            className=''
+            className="transition-transform duration-300 hover:rotate-[15deg]"
           />
         </div>
       </div>
