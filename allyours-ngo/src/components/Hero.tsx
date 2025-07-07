@@ -31,7 +31,7 @@ export default function Hero() {
             alt='Peekaboo illustration'
             width={329.92}
             height={329.92}
-            className="transition-transform duration-300 hover:rotate-[15deg]"
+            className="transition-transform size-[215px] lg:size-[329.92px] duration-300 hover:rotate-[15deg]"
           />
         </div>
         <div>
@@ -44,7 +44,7 @@ export default function Hero() {
             alt='Peekaboo illustration'
             width={329.92}
             height={329.92}
-            className="transition-transform duration-300 hover:rotate-[15deg]"
+            className="transition-transform  size-[215px] lg:size-[329.92px] duration-300 hover:rotate-[15deg]"
           />
         </div>
         <div>
@@ -57,7 +57,7 @@ export default function Hero() {
             alt='Peekaboo illustration'
             width={349.92}
             height={349.92}
-            className="transition-transform duration-300 hover:rotate-[15deg]"
+            className="transition-transform  size-[215px] lg:size-[329.92px] duration-300 hover:rotate-[15deg]"
           />
         </div>
       </div>

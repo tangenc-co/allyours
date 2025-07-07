@@ -31,7 +31,7 @@ export default function Section6() {
     <>
       <div className='bg-[##005CFF] text-center min-h-[352px] py-[72px] bg-[#005CFF] flex flex-col items-center justify-around'>
         <h2 className='text-[48px]/[64px] morangamd text-[#f9f9f9]'>Know Our Mission</h2>
-        <div className='flex gap-[64px]'>
+        <div className='flex flex-col lg:flex-row gap-[64px]'>
           <div className='text-center text-[#f9f9f9] max-w-[376px] min-h-[180px] flex flex-col items-center justify-evenly '>
             <Image src={house} alt='Peekaboo illustration' width={48} height={48} className='text-center' />
             <h3 className='morangamd text-[24px]'>Co Working Space</h3>

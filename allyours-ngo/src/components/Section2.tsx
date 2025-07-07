@@ -1,11 +1,15 @@
 import Carousel from './subcomponents/Carousel'
 import Image from 'next/image'
 import joinwithus from '../../public/assets/Images/joinwithus.png'
+import leftblob from '../../public/assets/Illustration.SVG/leftblob.svg'
+import rightblob from '../../public/assets/Illustration.SVG/rightblob.svg'
 
 export default function Section2() {
   return (
-    <div className='min-h-screen '>
-      <div className='flex justify-around w-[1121px] h-[374px] mx-auto'>
+    <div className='min-h-screen relative'>
+      <Image src={leftblob} alt='left blob' width={196} height={196} className='absolute' />
+      
+      <div className='flex flex-col items-center lg:flex-row justify-around max-w-[1121px] min-h-[374px] mx-auto'>
         <div>
           <div>
             <p className='w-[188px] h-[22px] sfprobold'>Join With Us </p>
@@ -50,7 +54,9 @@ export default function Section2() {
             </button>
           </div>
         </div>
+        <Image src={rightblob} alt='right blob' width={196} height={196} className='absolute right-0' />
       </div>
+      
 
       <div className='bg-[#005cff]  h-auto w-full mt-[110px] py-[80px]'>
         <div className='max-w-[1200px] mx-auto text-[#f9f9f9] mb-[30px]'>
