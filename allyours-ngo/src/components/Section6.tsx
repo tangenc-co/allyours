@@ -30,60 +30,61 @@ export default function Section6() {
   return (
     <>
       <div className='bg-[##005CFF] text-center min-h-[352px] py-[72px] bg-[#005CFF] flex flex-col items-center justify-around'>
-        <h2 className='text-[48px]/[64px] morangamd text-[#f9f9f9]'>Know Our Mission</h2>
-        <div className='flex flex-col lg:flex-row gap-[64px]'>
+        <h2 className='text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[64px] morangamd text-[#f9f9f9] mb-[35px]'>Know Our Mission</h2>
+        <div className='flex flex-col lg:flex-row gap-[44px] md:gap-[64px]'>
           <div className='text-center text-[#f9f9f9] max-w-[376px] min-h-[180px] flex flex-col items-center justify-evenly '>
             <Image src={house} alt='Peekaboo illustration' width={48} height={48} className='text-center' />
-            <h3 className='morangamd text-[24px]'>Co Working Space</h3>
-            <p className='sfpromd text-[16px]'>
+            <h3 className='morangamd text-[20px]/[26px] md:text-[24px]'>Co Working Space</h3>
+            <p className='sfpromd text-[14px] lg:text-[16px] mx-[20px] md:mx-auto'>
               Fostering collaboration and creativity by connecting project leaders with real industry exposure
             </p>
           </div>
+
           <div className='text-center text-[#f9f9f9] max-w-[376px] min-h-[180px] flex flex-col items-center justify-evenly '>
             <Image src={emoji} alt='Peekaboo illustration' width={48} height={48} className='text-center' />
-            <h3 className='morangamd text-[24px]'>Co Working Space</h3>
-            <p className='sfpromd text-[16px]'>
+            <h3 className='morangamd text-[20px]/[26px] md:text-[24px]'>Co Working Space</h3>
+            <p className='sfpromd text-[14px] lg:text-[16px] mx-[20px] md:mx-auto'>
               Fostering collaboration and creativity by connecting project leaders with real industry exposure
             </p>
           </div>
           <div className='text-center text-[#f9f9f9] max-w-[376px] min-h-[180px] flex flex-col items-center justify-evenly '>
             <Image src={coffee} alt='Peekaboo illustration' width={48} height={48} className='text-center' />
-            <h3 className='morangamd text-[24px]'>Co Working Space</h3>
-            <p className='sfpromd text-[16px]'>
+            <h3 className='morangamd text-[20px]/[26px] md:text-[24px]'>Co Working Space</h3>
+            <p className='sfpromd text-[14px] lg:text-[16px] mx-[20px] md:mx-auto'>
               Fostering collaboration and creativity by connecting project leaders with real industry exposure
             </p>
           </div>
         </div>
       </div>
-      <div className='text-center py-[94px] flex flex-col items-center'>
+      <div className='text-center py-[74px] md:py-[94px] flex flex-col items-center'>
         <p className='font-[600] text-[16px] mb-[15px]'>We Bring the Impacts</p>
-        <h2 className='morangarg text-[48px]/[64px] mb-[60px]'>Our Team Members</h2>
+        <h2 className='morangamd text-[32px]/[40px] lg:text-[48px]/[64px] mb-[60px]'>Our Team Members</h2>
 
-        <div>
-          <div className='flex flex-wrap items-center max-w-[1170px] gap-[64px]'>
+        <div className='mx-[10px] md:mx-[20px]'>
+          <div className='flex flex-wrap items-center justify-center max-w-[1170px] gap-[44px] md:gap-[64px]'>
             {members.map((member, index) => (
-              <div key={index} className='flex items-center justify-start w-[244px] '>
-                <Image src={member.image} alt='Peekaboo illustration' width={56} height={56} />
-                <span className='sfprorg font-[700] size-[16px] w-[100%] ml-[20px] text-start'>{member.name}</span>
+              <div key={index} className='flex items-center justify-start w-[145px] md:w-[244px] '>
+                <Image src={member.image} alt='Peekaboo illustration' width={56} height={56} className="size-[40px] md:size-[56px]"/>
+                <span className='text-[14px] md:text-[16px] sfprorg font-[700] w-[100%] ml-[5px] md:ml-[20px] text-start'>{member.name}</span>
               </div>
             ))}
           </div>
-          <div className='flex items-center gap-[20px] mt-[55px]'>
+          <div className='flex items-center gap-[10px] md:gap-[20px] mt-[55px] ml-[30px] md:ml-0'>
             <Image
               src={plus}
               alt='Peekaboo illustration'
               width={35}
               height={35}
-              className='bg-[#005cff] p-[5px] rounded-[30px]'
+              className='bg-[#005cff] p-[5px] rounded-[30px] cursor-pointer'
             />
-            <span className='sfprobold  text-[16px]'>Click To Apply</span>
+            <span className='sfprobold text-[16px]'>Click To Apply</span>
           </div>
         </div>
       </div>
-      <div className='min-h-[300px] bg-[#005CFF] text-start py-[92px] flex flex-col items-center'>
-        <div className='max-w-[1256px] flex flex-col gap-[32px] text-[#f9f9f9] text-start'>
-          <h2 className='morangamd text-[48px]/[64px]'>Know Our Achievements</h2>
-          <p className='sfprorg text-[20px]/[30px]'>
+      <div className='min-h-[300px] bg-[#005CFF] text-start py-[44px] md:py-[92px] flex flex-col items-center w-full px-[20px]'>
+        <div className='max-w-[337px] sm:max-w-[1256px] flex flex-col gap-[32px] text-[#f9f9f9] text-start'>
+          <h2 className='morangamd text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[64px]'>Know Our Achievements</h2>
+          <p className='sfprorg text-[14px] md:text-[18px]/[40px] lg:text-[20px]/[30px]'>
             Download and explore our journey of past achievements and the meaningful impact we've made in communities.
             From empowering youth and fostering inclusive growth to creating real opportunities for change, our
             milestones reflect a shared commitment to building a brighter, sustainable futures for creative

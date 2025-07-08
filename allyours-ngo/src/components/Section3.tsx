@@ -23,7 +23,7 @@ const slides: string[] = [
 export default function Section3() {
   return (
     <div className='min-h-screen w-full'>
-      <div className='text-center flex flex-col items-center justify-between h-[235px] py-8 mb-[-220px] mt-[40px]'>
+      <div className='text-center flex flex-col items-center justify-between h-[235px] py-8 mb-[-130px] md:mb-[-220px] mt-[40px]'>
         <div className='flex justify-evenly'>
           <Image
             src={frontPeekaboo}
@@ -32,10 +32,10 @@ export default function Section3() {
             height={48}
             className='mr-[10px] mt-[2px]'
           />
-          <h1 className='text-[#fe6835] text-[48px]/[68px] mt-4 morangarg'>Design Thinking Jam Peekaboo</h1>
+          <h1 className='max-w-[190px] md:max-w-[474px] text-[#fe6835] text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[68px] mt-4 morangamd'>Design Thinking Jam Peekaboo</h1>
           <Image src={backPeekaboo} alt='Peekaboo illustration' width={48} height={48} className='ml-[10px] mt-[2px]' />
         </div>
-        <p className=' w-full max-w-[1258px] text-center text-gray-800 text-[20px]/[30px] p-4 sfprorg'>
+        <p className='w-full max-w-[1258px] text-center text-gray-800 text-[14px] md:text-[16px] lg:text-[20px]/[30px] p-4 sfprorg'>
           Peekaboo by allyours assemble creatives and enthusiasts to explore the integration of art and design into
           daily lives. The 1st Peekaboo Event and the 2nd Peekaboo Design Jam both connected the participants in a
           lively atmosphere, a vibrant and immersive experience.

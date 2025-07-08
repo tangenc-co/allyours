@@ -18,7 +18,7 @@ export const Marquee: FC = () => {
   ]
 
   return (
-    <div className='w-full mx-auto text-white overflow-x-hidden mt-[-100px]'>
+    <div className='w-full mx-auto text-white overflow-x-hidden mt-[-160px] md:mt-[-100px] mb-[100px]'>
       <div className='flex myGradient items-center'>
         <motion.div
           initial={{ x: '0' }}
@@ -27,7 +27,7 @@ export const Marquee: FC = () => {
           className='flex flex-shrink-0'
         >
           {items.map((item, index) => (
-            <Image key={index} src={item} alt='Peekaboo illustration' width={140} height={50} className='mr-[30px]' />
+            <Image key={index} src={item} alt='Peekaboo illustration' width={140} height={40} className='mr-[30px]' />
           ))}
         </motion.div>
 
@@ -38,7 +38,7 @@ export const Marquee: FC = () => {
           className='flex flex-shrink-0'
         >
           {items.map((item, index) => (
-            <Image key={index} src={item} alt='Peekaboo illustration' width={140} height={50} className='mr-[30px]' />
+            <Image key={index} src={item} alt='Peekaboo illustration' width={140} height={40} className='mr-[30px]' />
           ))}
         </motion.div>
       </div>

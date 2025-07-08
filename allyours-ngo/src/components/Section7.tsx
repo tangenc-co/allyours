@@ -34,21 +34,22 @@ export default function Section7() {
   ]
 
   return (
-    <div className='min-h-screen text-center pt-[120px]'>
+    <div className='min-h-screen text-center pt-[70px] md:pt-[120px]'>
       <p className='text-[16px] font-[600] mb-[20px]'>FAQs</p>
-      <h2 className='morangamd text-[48px]/[64px] mb-[85px]'>Frequently Ask Questions</h2>
+      <h2 className='morangamd text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[64px] mb-[40px] md:mb-[85px]'>Frequently Ask Questions</h2>
 
-      <div className='flex flex-col items-center'>
-        <div className='shadow-[0px_100px_100px_0px_#0000000F] accordion-group max-w-[873px] rounded-[24px] bg-[#f9f9f9] py-[64px] px-[88px] flex flex-col items-center '>
-          <div className='max-w-[697px] flex flex-col gap-[75px]'>
+      <div className='flex flex-col items-center '>
+        <div className=' shadow-[0px_100px_100px_0px_#0000000F] accordion-group max-w-[873px] rounded-[24px] bg-[#f9f9f9] py-[64px] px-[24px] xl:px-[88px] flex flex-col items-center mx-[30px]'>
+          <div className='max-w-[697px] flex flex-col gap-[75px] '>
             {questions.map((item, idx) => (
-              <div key={idx} className='text-left w-[100%] '>
+              <div key={idx} className='relative text-left w-[100%] '>
                 <button
                   onClick={() => toggleAccordion(idx)}
-                  className='relative bg-[#f9f9f9] border-none  cursor-pointer'
+                  className=' bg-[#f9f9f9] border-none  cursor-pointer'
                 >
-                  <div className='relative w-[625px]'>
-                    <h3 className='morangarg text-[24px] text-[#005CFF] max-w-[585px] text-start'>{item.question}</h3>
+                  {/* max-w-[625px] */}
+                  <div className='max-w-[625px]'>
+                    <h3 className='morangarg text-[16px] md:text-[20px] lg:text-[24px] text-[#005CFF] max-w-[585px] pr-[50px] text-start'>{item.question}</h3>
                     <div className='absolute top-[0] right-[0]'>
                       {activeIndex === idx ? (
                         <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>

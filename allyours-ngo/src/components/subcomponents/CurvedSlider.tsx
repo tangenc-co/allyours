@@ -52,12 +52,10 @@ const CurvedSlider: React.FC<CurvedSliderProps> = ({
 
     scene.current = new THREE.Scene()
 
-    // Setup Camera
     const cam = new THREE.PerspectiveCamera(75, el.clientWidth / el.clientHeight, 0.1, 20)
     cam.position.z = 2
     camera.current = cam
 
-    // Setup Renderer
     const rend = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     rend.setSize(el.clientWidth, el.clientHeight)
     rend.setPixelRatio(window.devicePixelRatio)
@@ -66,18 +64,14 @@ const CurvedSlider: React.FC<CurvedSliderProps> = ({
     while (el.firstChild) el.removeChild(el.firstChild)
     el.appendChild(rend.domElement)
 
-    // Geometry with reduced height (0.6)
     const geometry = new THREE.PlaneGeometry(1, 0.58, 20, 20)
 
-    // Calculate plane spacing and image tiling
     const planeSpace = getPlaneWidth(el, cam) * getWidth(options.gap ?? 10)
 
-    // Number of times images repeat to fill width plus some extra
     const totalImageCount = Math.ceil(el.clientWidth / planeSpace) + 1 + images.length
 
     const initialOffset = Math.ceil(el.clientWidth / (2 * planeSpace) - 0.5)
 
-    // Prepare image list with repetition for seamless loop
     const allImages = [...images]
     for (let i = images.length; i < totalImageCount; i++) {
       allImages.push(images[i % images.length])
@@ -85,7 +79,6 @@ const CurvedSlider: React.FC<CurvedSliderProps> = ({
 
     planes.current = []
 
-    // Load textures and create planes
     allImages.forEach((imgSrc, i) => {
       const loader = new THREE.TextureLoader()
       loader.load(imgSrc, (texture: THREE.Texture) => {
@@ -115,13 +108,11 @@ const CurvedSlider: React.FC<CurvedSliderProps> = ({
         })
 
         const plane = new THREE.Mesh(geometry, material)
-        // Initially position planes (will be updated in animate)
         planes.current[i] = plane
         scene.current?.add(plane)
       })
     })
 
-    // Pointer (mouse/touch) event handlers for drag control
     const onPointerDown = (e: PointerEvent) => {
       isDragging.current = true
       dragLastX.current = e.clientX
@@ -133,7 +124,7 @@ const CurvedSlider: React.FC<CurvedSliderProps> = ({
       const deltaX = e.clientX - dragLastX.current
       dragLastX.current = e.clientX
 
-      offset.current -= deltaX * 0.01 // sensitivity tweak here
+      offset.current -= deltaX * 0.01 
       dragVelocity.current = deltaX
     }
 
@@ -151,7 +142,7 @@ const CurvedSlider: React.FC<CurvedSliderProps> = ({
 
     const totalWidth = getWidth(options.gap ?? 10) * images.length
 
-    // Animation Loop
+    
     const animate = (currentTime: number) => {
       if (!scene.current || !renderer.current || !camera.current) return
 
@@ -202,7 +193,6 @@ const CurvedSlider: React.FC<CurvedSliderProps> = ({
 
     window.addEventListener('resize', onResize)
 
-    // Cleanup on unmount
     return () => {
       if (animationId.current) cancelAnimationFrame(animationId.current)
       window.removeEventListener('resize', onResize)
