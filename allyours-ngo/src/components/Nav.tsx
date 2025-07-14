@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
-import allyoursNavLogo from '../public/assets/Images/all yours-01.png'
+import allyoursNavLogo from '../../public/assets/Images/all yours-01_cropped.png'
 
 export default function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)

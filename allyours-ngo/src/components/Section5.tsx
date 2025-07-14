@@ -20,7 +20,7 @@ export default function Section5() {
         
 
           <div className='min-w-[410px] relative '>
-            <div className="absolute size-[54px] bg-[#f9f9f9] border border-[#b6b6b6] z-[10] rounded-[100px] flex items-center justify-center shadow-[0px_25px_60px_0px_#87B3FFCC] bottom-[48px] left-[180px]">
+            <div className="absolute size-[54px] bg-[#f9f9f9] border border-[#b6b6b6] z-[10] rounded-[100px] flex items-center justify-center shadow-[0px_25px_60px_0px_#87B3FFCC] bottom-[48px] left-[190px]">
               <Image src={rocket} alt="curvedlineshadow" width={32} height={32} />
             </div>
 
@@ -76,7 +76,7 @@ export default function Section5() {
         
 
           <div className='min-w-[372px] relative pl-[90px] md:pl-[160px] pb-[200px]'>
-            <div className="absolute size-[54px] bg-[#f9f9f9] border border-[#b6b6b6] z-[10] rounded-[100px] flex items-center justify-center shadow-[0px_25px_60px_0px_#87B3FFCC] left-[10px] md:left-[30px] top-[30px] xl:top-[10px] ">
+            <div className="absolute size-[54px] bg-[#f9f9f9] border border-[#b6b6b6] z-[10] rounded-[100px] flex items-center justify-center shadow-[0px_25px_60px_0px_#87B3FFCC] left-[10px] md:left-[50px] top-[30px] xl:top-[10px] ">
               <Image src={rocket} alt="curvedlineshadow" width={32} height={32} />
             </div>
 
