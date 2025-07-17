@@ -104,7 +104,7 @@ export default function Carousel() {
                   </svg>
                 ))}
               </div>
-              <div className='text-[14px] md:text-[20px]/[30px] sfprorg text-[#f9f9f9]'>"{testimonial.review}"</div>
+              <div className='text-[14px] md:text-[20px]/[30px] sfprorg text-[#f9f9f9]'>&quot;{testimonial.review}&quot;</div>
             </div>
           </SwiperSlide>
         ))}

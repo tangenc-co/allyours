@@ -22,7 +22,7 @@ export default function Section7() {
         'We maintain and facilitate our physical workspace with the necessary equipment to ensure the creative process, run the site visits smoothly and offer coaching sessions for the project leaders. In the future, we plan to have a self-sustainable financial model, which will be sufficient to carry out its own services.',
     },
     {
-      question: 'What is allyours’s special essence?',
+      question: "What is allyours's special essence?",
       answer:
         'The difference is in Our Purpose, while traditional co-working spaces may focus on everyone, we specifically target small leaders and soloists who wish to pursue their own individual projects in art, design and education. allyours’s lab is not just a working space but a creative community where you can establish networks, be inspired by site visits, and have an active audience for your projects; all that will foster your professional growth.',
     },

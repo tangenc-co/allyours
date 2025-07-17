@@ -7,7 +7,7 @@ export default function Hero() {
           Cultivating Creative Minds Retaining Design Intelligence
         </p>
         <p className='max-w-[321px] md:max-w-[610px] lg:w-auto text-[14px]/[20px] md:text-[16px] lg:text-[20px]/[30px] textgray sfprorg mb-[30px] textcenter mx-auto'>
-          We’re on a mission to cherish and elevate design talent by tackling brain drain and creative burnout through
+          We&apos;re on a mission to cherish and elevate design talent by tackling brain drain and creative burnout through
           skill growth, community support and meaningful purposes. Let’s shape a stronger future for the industry,
           beginning from today. 
         </p>
