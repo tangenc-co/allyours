@@ -52,18 +52,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-<<<<<<< Updated upstream
       <body className={` ${geistSans.variable} ${geistMono.variable} antialiased bg-[#f9f9f9]`}>
         <Nav />
         {children}
-        <Footer/>
-=======
-      <body className={` ${geistSans.variable} ${geistMono.variable} antialiased`}>
-    
-          <Nav />
-          {children}
-    
->>>>>>> Stashed changes
+        <Footer />
+
       </body>
     </html>
   )

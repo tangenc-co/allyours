@@ -9,7 +9,7 @@ import global from '../../public/assets/Icons.SVG/Fill Icons/global.svg'
 export default function Section5() {
   return (
     <>
-<<<<<<< Updated upstream
+
       <div className='min-h-screen text-center pt-[60px] xl:pt-[112px] flex flex-col items-center'>
         <p className="sfprobold text-[14px] md:text-[16px] mb-[10px] md:mb-[20px]">Art, Design, Education</p>
         <h2 className='text-[24px]/[30px] md:text-[48px]/[64px] morangamd mb-[10px] md:mb-[110px]'>Know Our Vision</h2>
@@ -84,7 +84,7 @@ export default function Section5() {
             <p className="sfpromd text-[120px] md:text-[250px] bg-[linear-gradient(to_bottom,_#bcbcbc_0%,_transparent_71%)] bg-clip-text text-transparent absolute top-[-70px] right-[30px] md:top-[-190px] md:right-[-70px]">
               1
             </p>
-            <div className='text-start max-w-[222px] md:max-w-[251px] md:max-w-[291px]'>
+            <div className='text-start max-w-[222px]  md:max-w-[291px]'>
               <h2 className='morangamd text-[16px]/[26px] md:text-[20px]/[26px] text-[#151515] mb-[10px]'>Creative Empowerment</h2>
               <p className='sfprorg text-[14px] textgray'>Empowering creatives and educators from 
                 Yangon to Mars through inclusive communities.</p>
@@ -126,10 +126,7 @@ export default function Section5() {
         </div>
 
 =======
-      <div className='min-h-screen text-center '>
-        <p>Art, Design, Education</p>
-        <h2 className='text-[48px]/[64px] morangarg'>Know Our Vision</h2>
->>>>>>> Stashed changes
+  
       </div>
     </>
   )

@@ -59,9 +59,9 @@ module.exports = {
   		}
   	}
   },
-<<<<<<< Updated upstream
-  plugins: [require('@tailwindcss/line-clamp')],
-=======
-  plugins: [require("tailwindcss-animate")],
->>>>>>> Stashed changes
+
+  plugins: [
+	
+  ],
+
 }

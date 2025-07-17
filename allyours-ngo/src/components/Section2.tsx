@@ -55,7 +55,7 @@ export default function Section2() {
           </div>
 
           <div className='flex flex-col md:flex-row justify-around max-w-[350px] gap-[14px] md:gap-[24px]'>
-            <button className='py-[10px] px-[14px] rounded rounded-[24px] border-none w-full md:w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#005cff] text-[16px]/auto'>
+            <button className='py-[10px] px-[14px]  rounded-[24px] border-none w-full md:w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#005cff] text-[16px]/auto'>
               Join Our Programs
             </button>
             <button className='rounded-[24px] border-[1px] border-[#b6b6b6] w-full md:w-[143px] h-[47px] cursor-pointer text-[#000] bg-[#fff] text-[16px]'>
