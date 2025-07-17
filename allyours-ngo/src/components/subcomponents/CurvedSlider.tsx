@@ -19,7 +19,7 @@ const CurvedSlider: React.FC<CurvedSliderProps> = ({
   className = 'mdw-curved-slider',
   options = { speed: 30, gap: 10, curve: 12, direction: -1 },
   images,
-  minHeight = '100vh',
+  minHeight = '120vh',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
 

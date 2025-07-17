@@ -9,6 +9,10 @@
   --vertical-padding: 64px;
 }
 
+.min-h-screen {
+  min-height: 120vh !important;
+}
+
 * {
   margin: 0;
   padding: 0;

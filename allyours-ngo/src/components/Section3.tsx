@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import frontPeekaboo from '../../public/assets/Illustration.SVG/peekaboo illustration front.svg'
 import backPeekaboo from '../../public/assets/Illustration.SVG/peekaboo illustration back.svg'
-import { useEffect, useState } from 'react'
 
 import CurvedSlider from './subcomponents/CurvedSlider'
 import { Marquee } from './subcomponents/Marquee'
@@ -22,12 +21,6 @@ const slides: string[] = [
 ]
 
 export default function Section3() {
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
   return (
     <div className='min-h-screen w-full'>
       <div className='text-center flex flex-col items-center justify-between h-[235px] py-8 mb-[-130px] md:mb-[-220px] mt-[40px]'>
@@ -39,7 +32,7 @@ export default function Section3() {
             height={48}
             className='mr-[10px] mt-[2px]'
           />
-          <h1 className='max-w-[190px] md:max-w-[474px] text-[#fe6835] text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[68px] mt-4 morangamd'>Design Thinking Jam Peekaboo</h1>
+          <h1 className='max-w-[190px] md:max-w-[494px] text-[#fe6835] text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[68px] mt-4 morangamd'>Design Thinking Jam Peekaboo</h1>
           <Image src={backPeekaboo} alt='Peekaboo illustration' width={48} height={48} className='ml-[10px] mt-[2px]' />
         </div>
         <p className='w-full max-w-[1258px] text-center text-gray-800 text-[14px] md:text-[16px] lg:text-[20px]/[30px] p-4 sfprorg'>
@@ -57,12 +50,8 @@ export default function Section3() {
         </div>
       </div>
 
-      {isClient && (
-        <>
-          <CurvedSlider images={slides} />
-          <Marquee />
-        </>
-      )}
+        <CurvedSlider images={slides} />
+      <Marquee />
     </div>
   )
 }
