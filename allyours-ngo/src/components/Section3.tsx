@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import frontPeekaboo from '../../public/assets/Illustration.SVG/peekaboo illustration front.svg'
 import backPeekaboo from '../../public/assets/Illustration.SVG/peekaboo illustration back.svg'
+import { useEffect, useState } from 'react'
 
 import CurvedSlider from './subcomponents/CurvedSlider'
 import { Marquee } from './subcomponents/Marquee'
@@ -21,6 +22,12 @@ const slides: string[] = [
 ]
 
 export default function Section3() {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   return (
     <div className='min-h-screen w-full'>
       <div className='text-center flex flex-col items-center justify-between h-[235px] py-8 mb-[-130px] md:mb-[-220px] mt-[40px]'>
@@ -50,8 +57,12 @@ export default function Section3() {
         </div>
       </div>
 
-      <CurvedSlider images={slides} />
-      <Marquee />
+      {isClient && (
+        <>
+          <CurvedSlider images={slides} />
+          <Marquee />
+        </>
+      )}
     </div>
   )
 }
