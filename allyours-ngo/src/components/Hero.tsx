@@ -8,8 +8,8 @@ export default function Hero() {
         </p>
         <p className='max-w-[321px] md:max-w-[610px] lg:w-auto text-[14px]/[20px] md:text-[16px] lg:text-[20px]/[30px] textgray sfprorg mb-[30px] textcenter mx-auto'>
           We&apos;re on a mission to cherish and elevate design talent by tackling brain drain and creative burnout through
-          skill growth, community support and meaningful purposes. Let’s shape a stronger future for the industry,
-          beginning from today. 
+          skill growth, community support and meaningful purposes. Let&apos;s shape a stronger future for the industry,
+          beginning from today.
         </p>
         <div className='flex justify-around max-w-[302px] md:max-w-[400px] mx-auto'>
           <button className='py-[10px] px-[14px]  rounded-[24px] border-none w-[166px] md:w-[183px] h-[45px] md:h-[47px] cursor-pointer text-[#fff] bg-[#005cff] text-[14px] md:text-[16px]/auto'>
