@@ -9,6 +9,7 @@ import global from '../../public/assets/Icons.SVG/Fill Icons/global.svg'
 export default function Section5() {
   return (
     <>
+<<<<<<< Updated upstream
       <div className='min-h-screen text-center pt-[60px] xl:pt-[112px] flex flex-col items-center'>
         <p className="sfprobold text-[14px] md:text-[16px] mb-[10px] md:mb-[20px]">Art, Design, Education</p>
         <h2 className='text-[24px]/[30px] md:text-[48px]/[64px] morangamd mb-[10px] md:mb-[110px]'>Know Our Vision</h2>
@@ -124,6 +125,11 @@ export default function Section5() {
 
         </div>
 
+=======
+      <div className='min-h-screen text-center '>
+        <p>Art, Design, Education</p>
+        <h2 className='text-[48px]/[64px] morangarg'>Know Our Vision</h2>
+>>>>>>> Stashed changes
       </div>
     </>
   )
