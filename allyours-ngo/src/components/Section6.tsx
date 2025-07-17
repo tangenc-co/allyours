@@ -85,7 +85,7 @@ export default function Section6() {
         <div className='max-w-[337px] sm:max-w-[1256px] flex flex-col gap-[32px] text-[#f9f9f9] text-start'>
           <h2 className='morangamd text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[64px]'>Know Our Achievements</h2>
           <p className='sfprorg text-[14px] md:text-[18px]/[40px] lg:text-[20px]/[30px]'>
-            Download and explore our journey of past achievements and the meaningful impact we've made in communities.
+            Download and explore our journey of past achievements and the meaningful impact we&apos;ve made in communities.
             From empowering youth and fostering inclusive growth to creating real opportunities for change, our
             milestones reflect a shared commitment to building a brighter, sustainable futures for creative
             industry.{' '}

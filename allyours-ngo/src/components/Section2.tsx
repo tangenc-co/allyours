@@ -31,7 +31,7 @@ export default function Section2() {
           <div>
             <p className='textgray text-[14px] max-w-[333px] md:max-w-[545px] md:text-[16px] lg:text-[20px]/[30px] font-[400px] mt-[40px] xl:mt-0 mb-[45px] sfprorg mx-auto'>
               Our main purpose is to establish a meaningful network and empower small project leaders to flourish,
-              connect, and grow together. A creative community where people don’t have to do it all alone.
+              connect, and grow together. A creative community where people don&apos;t have to do it all alone.
             </p>
             <div className='flex flex-col md:flex-row items-center md:items-start justify-around mx-auto mb-[20px] space-y-[30px] md:space-y-0'>
               <div className='max-w-[320px] md:max-w-[200px] h-[110px] px-[8px] text-center mx-auto md:mx-0'>
