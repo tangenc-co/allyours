@@ -1,9 +1,18 @@
 'use client'
 import { useState } from 'react'
-
-
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from '@/components/ui/pagination'
+import pack from "../../../public/assets/Relume.png"
+import Image from 'next/image'
 export default function Table() {
-const donators = [
+  const donators = [
     { id: 1, name: 'Kyaw Kyaw', type: 'Corporate Donator', amount: 100, rank: 'Advocate' },
     { id: 2, name: 'Anonymous Donor', type: 'Corporate Donator', amount: 100, rank: 'Alliance' },
     { id: 3, name: 'U Shwe Moe', type: 'Free Donator', amount: 100, rank: 'None' },
@@ -24,7 +33,18 @@ const donators = [
     { id: 18, name: 'Nyein Nyein', type: 'Corporate Donator', amount: 220, rank: 'Ambassador' },
     { id: 19, name: 'Thida', type: 'Free Donator', amount: 55, rank: 'None' },
     { id: 20, name: 'Win Win', type: 'Corporate Donator', amount: 275, rank: 'Alliance' },
-]
+    { id: 21, name: 'Htun Htun', type: 'Free Donator', amount: 45, rank: 'None' },
+    { id: 22, name: 'Khin Khin', type: 'Corporate Donator', amount: 320, rank: 'Advocate' },
+    { id: 23, name: 'Aye Aye', type: 'Free Donator', amount: 65, rank: 'None' },
+    { id: 24, name: 'Zin Zin', type: 'Corporate Donator', amount: 150, rank: 'Alliance' },
+    { id: 25, name: 'Hla Hla', type: 'Free Donator', amount: 75, rank: 'None' },
+    { id: 26, name: 'Maung Maung', type: 'Corporate Donator', amount: 400, rank: 'Advocate' },
+    { id: 27, name: 'Nanda', type: 'Free Donator', amount: 30, rank: 'None' },
+    { id: 28, name: 'Kyaing Kyaing', type: 'Corporate Donator', amount: 500, rank: 'Ambassador' },
+    { id: 29, name: 'Zaw Lin', type: 'Free Donator', amount: 120, rank: 'None' },
+    { id: 30, name: 'Aung Myint', type: 'Corporate Donator', amount: 600, rank: 'Alliance' },
+
+  ]
 
   const [currentPage, setCurrentPage] = useState(1)
   const rowsPerPage = 5
@@ -33,16 +53,17 @@ const donators = [
   const startIndex = (currentPage - 1) * rowsPerPage
   const currentDonators = donators.slice(startIndex, startIndex + rowsPerPage)
 
-  const goToPage = (page: number) => {
+  const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page)
     }
   }
 
-  const renderPageNumbers = () => {
+  const renderPageItems = () => {
     const pages = []
+    const maxVisiblePages = 5
 
-    if (totalPages <= 5) {
+    if (totalPages <= maxVisiblePages) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i)
       }
@@ -59,19 +80,22 @@ const donators = [
     return pages.map((page, index) => {
       if (page === '...') {
         return (
-          <span key={index} className='px-3 py-1 text-gray-500'>
-            ...
-          </span>
+          <PaginationItem key={`ellipsis-${index}`}>
+            <PaginationEllipsis className='text-[#005CFF]' />
+          </PaginationItem>
         )
       }
       return (
-        <button
-          key={index}
-          onClick={() => typeof page === 'number' && goToPage(page)}
-          className={`px-3 py-1 rounded ${currentPage === page ? 'bg-blue-600 text-white' : 'bg-gray-200 text-black'}`}
-        >
-          {page}
-        </button>
+        <PaginationItem key={page}>
+          <PaginationLink
+            className={`${
+              currentPage === page ? 'bg-[#005CFF] text-white hover:bg-[#005CFF]/80 hover:text-white' : 'bg-white text-[#005CFF]'
+            }  rounded-full `}
+            onClick={() => handlePageChange(Number(page))}
+          >
+            {page}
+          </PaginationLink>
+        </PaginationItem>
       )
     })
   }
@@ -79,8 +103,8 @@ const donators = [
   return (
     <div className='flex flex-col items-center mt-10'>
       <div className='w-full max-w-7xl'>
-        <table className='w-full border border-gray-200 rounded-lg shadow-md overflow-hidden'>
-          <thead className='bg-blue-100 text-blue-700'>
+        <table className='w-full  overflow-hidden'>
+          <thead className=' text-[#005CFF] border-b border-gray-200 sfpromd '>
             <tr>
               <th className='py-4 px-6 text-left'>Donator Name</th>
               <th className='py-4 px-6 text-left'>Donator Type</th>
@@ -89,36 +113,40 @@ const donators = [
             </tr>
           </thead>
           <tbody>
-            {currentDonators.map((donator, idx) => (
-              <tr key={donator.id} className={idx % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
-                <td className='py-3 px-6'>{donator.name}</td>
-                <td className='py-3 px-6'>{donator.type}</td>
-                <td className='py-3 px-6'>${donator.amount}</td>
-                <td className='py-3 px-6'>{donator.rank}</td>
+            {currentDonators.map((donator) => (
+              <tr key={donator.id}>
+                <td className='py-3 px-6 border-b  border-gray-200'>
+                  <Image src={pack} alt={donator.name} className='inline-block mr-2' />
+                  {donator.name}
+                </td>
+                <td className='py-3 px-6 border-b border-gray-200'>{donator.type}</td>
+                <td className='py-3 px-6 border-b border-gray-200'>${donator.amount}</td>
+                <td className='py-3 px-6 border-b border-gray-200'>{donator.rank}</td>
               </tr>
             ))}
           </tbody>
         </table>
 
-        {/* Pagination */}
-        <div className='flex justify-center mt-4 gap-2 items-center'>
-          <button
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage === 1}
-            className='px-3 py-1 bg-blue-500 text-white rounded disabled:opacity-50'
-          >
-            &lt;
-          </button>
+        <div className='flex justify-center mt-12'>
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  className={`${currentPage === 1 ? 'pointer-events-none opacity-50' : ''} text-[#005CFF] `}
+                />
+              </PaginationItem>
 
-          {renderPageNumbers()}
-        
-          <button
-            onClick={() => goToPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className='px-3 py-1 bg-blue-500 text-white rounded disabled:opacity-50'
-          >
-            &gt;
-          </button>
+              {renderPageItems()}
+
+              <PaginationItem>
+                <PaginationNext
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  className={`${currentPage === totalPages ? 'pointer-events-none opacity-50' : ''} text-[#005CFF] `}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
         </div>
       </div>
     </div>

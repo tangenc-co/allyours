@@ -10,11 +10,11 @@ export default function SupportUsHero() {
         <Image src={Vector} alt='Support Us Hero' layout='responsive' />
       </div>
       <div className='text-center max-w-[1104px] mx-auto mb-[100px]'>
-        <p className='text-[68px]/[80px] bg-[#fff] morangamd mb-[30px]'>
+        <p className='text-[68px]/[80px]  morangamd mb-[30px]'>
           Together, we can improve <br /> and build our design community
         </p>
         <p className='text-[20px]/[30px] textgray sfprorg mb-[30px] max-w-[1000px] mx-auto'>
-          We’re here to fight brain drain and creative burnout by uplifting design talent through growth, <br />{' '}
+          We&apos;ve here to fight brain drain and creative burnout by uplifting design talent through growth, <br />{' '}
           community, purpose, and opportunity. Your support helps shape a stronger future for the industry. 
         </p>
         <div className='flex justify-around max-w-[400px] mx-auto'>
