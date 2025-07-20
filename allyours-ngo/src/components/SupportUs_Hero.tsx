@@ -13,7 +13,7 @@ export default function SupportUsHero() {
         <p className='text-[68px]/[80px]  morangamd mb-[30px]'>
           Together, we can improve <br /> and build our design community
         </p>
-        <p className='text-[20px]/[30px] textgray sfprorg mb-[30px] max-w-[1000px] mx-auto'>
+        <p className='text-[20px]/[30px] text-[#444444]  sfprorg mb-[30px] max-w-[1000px] mx-auto'>
           We&apos;ve here to fight brain drain and creative burnout by uplifting design talent through growth, <br />{' '}
           community, purpose, and opportunity. Your support helps shape a stronger future for the industry. 
         </p>

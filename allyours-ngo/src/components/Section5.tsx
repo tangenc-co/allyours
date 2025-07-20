@@ -122,11 +122,7 @@ export default function Section5() {
                 with innovation, culture, and education.</p>
             </div>
           </div>
-
         </div>
-
-=======
-  
       </div>
     </>
   )

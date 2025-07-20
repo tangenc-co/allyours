@@ -29,7 +29,7 @@ export default function Section6() {
 
   return (
     <>
-      <div className='bg-[##005CFF] text-center min-h-[352px] py-[72px] bg-[#005CFF] flex flex-col items-center justify-around'>
+      <div className='text-center min-h-[352px] py-[72px] bg-[#005CFF] flex flex-col items-center justify-around'>
         <h2 className='text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[64px] morangamd text-[#f9f9f9] mb-[35px]'>Know Our Mission</h2>
         <div className='flex flex-col lg:flex-row gap-[44px] md:gap-[64px]'>
           <div className='text-center text-[#f9f9f9] max-w-[376px] min-h-[180px] flex flex-col items-center justify-evenly '>

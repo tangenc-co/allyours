@@ -11,7 +11,7 @@ import Youtube from '../../public/assets/Icons.SVG/Socials/Youtube.svg'
 export default function Footer() {
   return (
     <footer className='w-full bg-[#444444] text-[#f9f9f9]'>
-      <div className='max-w-7xl w-full mx-auto px-5 lg:px-8 py-[100px] flex flex-col lg:flex-row justify-between gap-[54px]'>
+      <div className='max-w-7xl w-full mx-auto px-5 md:px-8 py-[100px] flex flex-col lg:flex-row justify-between gap-[54px] '>
         {/* Left Section */}
         <div className='max-w-[600px] flex flex-col space-y-[24px]'>
           <Image
@@ -22,32 +22,31 @@ export default function Footer() {
             className='py-[5px] bg-[#f9f9f9] rounded-[24px]'
           />
 
-          <p className='morangamd text-[16px] md:text-[20px] leading-[26px]'>
-            Join our newsletter to stay up to date on features <br />
-            and releases.
+          <p className='morangarg  text-[16px] lg:text-[20px]/[26px] '>
+            Join our newsletter to stay up to date on features and releases.
           </p>
 
           <div>
-            <div className='flex flex-col sm:flex-row items-start sm:items-center'>
+            <div className='flex  sm:flex-row items-start sm:items-center'>
               <input
                 type='email'
-                className='p-[12px] rounded-[24px] w-full sm:w-[363px] h-[48px] border border-[#b6b6b6] text-[16px] bg-transparent placeholder:text-[#cccccc] mb-3 sm:mb-0'
+                className='p-[12px] rounded-[24px] w-[363px] h-[48px] border border-[#b6b6b6] text-[16px] bg-transparent placeholder:text-[#cccccc] mb-3 sm:mb-0'
                 placeholder='Enter your email'
               />
-              <button className='bg-[#f9f9f9] w-full sm:w-[121px] h-[48px] rounded-[32px] border border-[#b6b6b6] text-[16px] text-[#151515] sfprorg ml-0 sm:ml-[15px]'>
+              <button className='bg-[#f9f9f9] w-[121px] h-[48px] rounded-[32px] border border-[#b6b6b6] text-[16px] text-[#151515] sfprorg sm:ml-[15px] ml-[10px]'>
                 Subscribe
               </button>
             </div>
-            <p className='text-[12px] sfprorg mt-[10px] text-[#f9f9f9] tracking-wide'>
-              By subscribing you agree to with our <u>Privacy Policy</u> and provide consent to receive updates from our{' '}
-              <br />
+
+            <p className='text-[12px] sfprorg mt-[10px] text-[#f9f9f9] tracking-wide w-[300px]'>
+              By subscribing you agree to our <u>Privacy Policy</u> and provide consent to receive updates from our
               company.
             </p>
           </div>
         </div>
 
         {/* Right Section */}
-        <div className='w-full lg:w-[600px] flex flex-wrap gap-[40px]'>
+        <div className='w-full lg:w-[600px] flex flex-wrap lg:gap-[40px] md:gap-[90px] gap-[40px] '>
           {/* Navigation */}
           <div className='flex flex-col space-y-[16px] min-w-[150px]'>
             <h2 className='morangarg text-[24px]'>Navigation</h2>
@@ -69,7 +68,7 @@ export default function Footer() {
           </div>
 
           {/* Contents */}
-          <div className='flex flex-col space-y-[16px] min-w-[150px]'>
+          <div className='flex flex-col space-y-[16px] min-w-[150px] '>
             <h2 className='morangarg text-[24px]'>Contents</h2>
             <Link href='/' className='sfprorg text-[16px]'>
               Team Journey

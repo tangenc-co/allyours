@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import allyoursNavLogo from '../../public/assets/Images/all yours-01_cropped.png'
-
+import Menu from '../../public/assets/Icons.SVG/Outline Icons/menu.svg'
 export default function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
@@ -41,7 +41,7 @@ export default function Nav() {
             </div>
           )}
         </div>
-        <Link href='/contact'>
+        <Link href='/contact-us'>
           <button className='bg-[#005CFF] cursor-pointer px-[24px] py-[8px] rounded-[32px] border-none text-[#F9F9F9] text-[16px]'>
             Contact
           </button>
