@@ -6,7 +6,7 @@ import Send from '../../../public/assets/Illustration.SVG/send.svg'
 export default function ContactUs() {
   return (
     <div className='overflow-x-hidden'>
-      <div className='text-center max-w-[1104px] mx-auto mt-[150px] px-4'>
+      <div className='text-center max-w-[1104px] mx-auto mt-[50px] sm:mt-[150px] px-4'>
         <p className='text-[32px]/[40px]  md:text-[58px] lg:text-[68px]/[80px] morangamd mb-[30px] '>How Can We Help You?</p>
         <p className='text-[14px] md:text-lg text-[#444444] sfprorg mb-[30px] max-w-[700px] mx-auto'>
           Reach out to our operation and marketing teams for partnerships, organization and program-related questions
