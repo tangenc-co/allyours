@@ -12,7 +12,6 @@ export default function Footer() {
   return (
     <footer className='w-full bg-[#444444] text-[#f9f9f9]'>
       <div className='max-w-7xl w-full mx-auto px-5 md:px-8 py-[100px] flex flex-col lg:flex-row justify-between gap-[54px] '>
-        {/* Left Section */}
         <div className='max-w-[600px] flex flex-col space-y-[24px]'>
           <Image
             src={allyourslogo}
@@ -21,11 +20,9 @@ export default function Footer() {
             height={57}
             className='py-[5px] bg-[#f9f9f9] rounded-[24px]'
           />
-
           <p className='morangarg  text-[16px] lg:text-[20px]/[26px] '>
             Join our newsletter to stay up to date on features and releases.
           </p>
-
           <div>
             <div className='flex  sm:flex-row items-start sm:items-center'>
               <input
@@ -37,17 +34,13 @@ export default function Footer() {
                 Subscribe
               </button>
             </div>
-
             <p className='text-[12px] sfprorg mt-[10px] text-[#f9f9f9] tracking-wide w-[300px]'>
               By subscribing you agree to our <u>Privacy Policy</u> and provide consent to receive updates from our
               company.
             </p>
           </div>
         </div>
-
-        {/* Right Section */}
-        <div className='w-full lg:w-[600px] flex flex-wrap lg:gap-[40px] md:gap-[90px] gap-[40px] '>
-          {/* Navigation */}
+        <div className='w-full lg:w-[600px] flex flex-wrap lg:gap-[40px] md:gap-[90px] gap-[30px] '>    
           <div className='flex flex-col space-y-[16px] min-w-[150px]'>
             <h2 className='morangarg text-[24px]'>Navigation</h2>
             <Link href='/' className='sfprorg text-[16px]'>
@@ -66,8 +59,6 @@ export default function Footer() {
               Support Us
             </Link>
           </div>
-
-          {/* Contents */}
           <div className='flex flex-col space-y-[16px] min-w-[150px] '>
             <h2 className='morangarg text-[24px]'>Contents</h2>
             <Link href='/' className='sfprorg text-[16px]'>
@@ -86,8 +77,6 @@ export default function Footer() {
               Become a Volunteer
             </Link>
           </div>
-
-          {/* Socials */}
           <div className='flex flex-col space-y-[16px] min-w-[150px]'>
             <h2 className='morangarg text-[24px]'>Follow Us</h2>
             <Link href='/' className='sfprorg text-[16px] flex items-center'>

@@ -59,12 +59,9 @@ export default function Donate() {
 
   return (
     <div className='mt-[150px] max-w-7xl w-full px-5 mx-auto'>
-      {/* Header */}
       <p className='sfprobold mb-4'>Support Us</p>
-
-      {/* Title and Description */}
       <div className='flex flex-col lg:flex-row justify-between gap-6 mb-[100px]'>
-        <p className='text-[36px] lg:text-[48px] leading-[48px] lg:leading-[64px] font-medium text-[#151515] morangamd lg:w-1/2'>
+        <p className='text-[30px] lg:text-[48px] leading-[48px] lg:leading-[64px] font-medium text-[#151515] morangamd lg:w-1/2'>
           Specific Donation Can <br className='hidden lg:block' /> Give Huge Impact to Us.
         </p>
         <p className='text-[#444444] text-[18px] lg:text-[20px] leading-[30px] lg:w-1/2'>
@@ -73,8 +70,6 @@ export default function Donate() {
           grow, learn, and contribute, while unlocking their hidden talents and skills.
         </p>
       </div>
-
-      {/* Cards */}
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
         {cards.map((card) => (
           <div
@@ -98,7 +93,6 @@ export default function Donate() {
               </ul>
             </div>
 
-            {/* Buttons */}
             <div className='flex flex-col items-center sfprorg tracking-[1px] mt-6'>
               <button className='bg-[#005CFF] text-white py-3 px-6 rounded-[24px] w-full flex items-center justify-center'>
                 <Image src={handmoney} alt='Donate' width={24} height={24} className='mr-2' />
