@@ -11,7 +11,7 @@ import mbrightblob from '../../public/assets/Illustration.SVG/mbrightblob.svg'
 
 export default function Section2() {
   return (
-    <div className='min-h-screen relative mt-[120px] xl:mt-[250px]'>
+    <div className='min-h-screen relative mt-[120px] xl:mt-[250px]' id="section2">
       <Image src={leftblob} alt='left blob' width={196} height={196} className='absolute hidden xl:block ' />
       <Image src={tbleftblob} alt='left blob' width={56} height={56} className='absolute top-[40px] hidden md:block xl:hidden' />
       <Image src={mbleftblob} alt='left blob' width={20} height={26} className='absolute top-[250px] block md:hidden' />
@@ -19,7 +19,7 @@ export default function Section2() {
       <div className='flex flex-col items-center xl:flex-row justify-around max-w-[1121px] min-h-[374px] mx-auto'>
         <div>
           <div>
-            <p className='text-[14px] md:text-[16px] w-[188px] h-[22px] sfprobold flex items-center'>Join With Us  <Image src={rightchevon} alt='Peekaboo illustration' width={24} height={22} />
+            <p className='text-[14px] md:text-[16px] w-[188px] h-[22px] sfprobold flex items-center mb-[8px]'>Join With Us  <Image src={rightchevon} alt='Peekaboo illustration' width={24} height={22} />
             </p>
             <p className=' text-[24px]/[30px] md:text-[32px] lg:text-[48px] mb-[30px] font-[500] text-[#005cff] morangamd'>For you and for all of us</p>
           </div>

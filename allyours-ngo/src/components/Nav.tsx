@@ -39,26 +39,31 @@ export default function Nav() {
       id: 1,
       icon: Chat ,
       text: 'for u & all of us',
+      to: '#section2'
     },
     {
       id: 2,
       icon: Heart ,
       text: 'Peekaboo',
+      to: '#section3'
     },
     {
       id: 3,
       icon:  ChatGreen ,
       text: 'Our Podcast',
+      to:'#section4'
     },
     {
       id: 4,
       icon: Laptop ,
       text: 'Vision & Mission',
+      to:'#section5'
     },
     {
       id: 5,
       icon:  Members ,
       text: 'Meet the team',
+      to:'#section6'
     },
   ]
 
@@ -77,7 +82,7 @@ export default function Nav() {
               {allyoursItems.map((item) => (
                 <div key={item.id} className='flex items-center gap-2 px-2 py-1 cursor-pointer hover:bg-gray-50'>
                   <Image src={item.icon} alt={item.text} width={24} height={24} />
-                  <DropdownMenuItem>{item.text}</DropdownMenuItem>
+                  <DropdownMenuItem> <a href={item.to}>{item.text}</a></DropdownMenuItem>
                 </div>
               ))}
             </DropdownMenuContent>

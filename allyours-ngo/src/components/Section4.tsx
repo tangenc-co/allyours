@@ -3,7 +3,7 @@ import playbutton from '../../public/assets/Icons.SVG/Fill Icons/play-circle.svg
 
 export default function Section4() {
   return (
-    <div className='w-full h-auto bg-[#F7E8FF] py-[54px] md:py-[88px]'>
+    <div className='w-full h-auto bg-[#F7E8FF] py-[54px] md:py-[88px]' id="section4">
       <div className='text-center max-w-[800px] mx-auto'>
         <h1 className=' text-[24px]/[30px] md:text-[32px]/[40px] xl:text-[48px]/[64px] text-[#AA16FF] morangamd max-w-[230px] md:max-w-[1140px] mx-auto'>Podcast program for art and design</h1>
         <p className='text-[14px] md:text-[18px]/[24px] xl:text-[20px]/[30px] textgray mt-[35px] sfprorg mx-[20px]'>

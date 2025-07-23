@@ -1,7 +1,7 @@
 import Image from 'next/image'
 export default function Hero() {
   return (
-    <div className='min-h-screen md:min-h-[800px] xl:min-h-screen max-w-[1213px] mx-auto'>
+    <div className='min-h-screen md:min-h-[800px] xl:min-h-screen max-w-[1213px] mx-auto md:mb-[-30vh]'>
       <div className='text-center mt-[50px] max-w-[1104px] mx-auto mb-[100px]'>
         <p className='w-auto text-[32px]/[40px] md:text-[48px]/[64px] lg:text-[68px]/[80px] morangamd mb-[20px] lg:mb-[30px] mx-auto'>
           Cultivating Creative Minds Retaining Design Intelligence

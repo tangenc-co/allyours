@@ -56,7 +56,7 @@ export default function Section6() {
           </div>
         </div>
       </div>
-      <div className='text-center py-[74px] md:py-[94px] flex flex-col items-center'>
+      <div className='text-center py-[74px] md:py-[94px] flex flex-col items-center' id="section6">
         <p className='font-[600] text-[16px] mb-[15px]'>We Bring the Impacts</p>
         <h2 className='morangamd text-[32px]/[40px] lg:text-[48px]/[64px] mb-[60px]'>Our Team Members</h2>
 

@@ -10,7 +10,7 @@ export default function Section5() {
   return (
     <>
 
-      <div className='min-h-screen text-center pt-[60px] xl:pt-[112px] flex flex-col items-center'>
+      <div className='min-h-screen text-center pt-[60px] xl:pt-[112px] flex flex-col items-center xl:mb-[-280px]' id="section5">
         <p className="sfprobold text-[14px] md:text-[16px] mb-[10px] md:mb-[20px]">Art, Design, Education</p>
         <h2 className='text-[24px]/[30px] md:text-[48px]/[64px] morangamd mb-[10px] md:mb-[110px]'>Know Our Vision</h2>
 

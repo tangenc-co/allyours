@@ -22,7 +22,7 @@ const slides: string[] = [
 
 export default function Section3() {
   return (
-    <div className='min-h-screen w-full'>
+    <div className='min-h-screen w-full' id="section3">
       <div className='text-center flex flex-col items-center justify-between h-[235px] py-8 mb-[-130px] md:mb-[-220px] mt-[40px]'>
         <div className='flex justify-evenly'>
           <Image
