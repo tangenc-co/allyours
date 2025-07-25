@@ -9,8 +9,9 @@ import {
   PaginationNext,
   PaginationEllipsis,
 } from '@/components/ui/pagination'
-import pack from "../../../public/assets/Relume.png"
+import pack from '../../../public/assets/Relume.png'
 import Image from 'next/image'
+
 export default function Table() {
   const donators = [
     { id: 1, name: 'Kyaw Kyaw', type: 'Corporate Donator', amount: 100, rank: 'Advocate' },
@@ -43,7 +44,6 @@ export default function Table() {
     { id: 28, name: 'Kyaing Kyaing', type: 'Corporate Donator', amount: 500, rank: 'Ambassador' },
     { id: 29, name: 'Zaw Lin', type: 'Free Donator', amount: 120, rank: 'None' },
     { id: 30, name: 'Aung Myint', type: 'Corporate Donator', amount: 600, rank: 'Alliance' },
-
   ]
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -89,7 +89,9 @@ export default function Table() {
         <PaginationItem key={page}>
           <PaginationLink
             className={`${
-              currentPage === page ? 'bg-[#005CFF] text-white hover:bg-[#005CFF]/80 hover:text-white' : 'bg-white text-[#005CFF]'
+              currentPage === page
+                ? 'bg-[#005CFF] text-white hover:bg-[#005CFF]/80 hover:text-white'
+                : 'bg-white text-[#005CFF]'
             }  rounded-full `}
             onClick={() => handlePageChange(Number(page))}
           >
@@ -102,30 +104,32 @@ export default function Table() {
 
   return (
     <div className='flex flex-col items-center mt-10'>
-      <div className='w-full max-w-7xl'>
-        <table className='w-full  overflow-hidden'>
-          <thead className=' text-[#005CFF] border-b border-gray-200 sfpromd '>
-            <tr>
-              <th className='py-4 px-6 text-left'>Donator Name</th>
-              <th className='py-4 px-6 text-left'>Donator Type</th>
-              <th className='py-4 px-6 text-left'>Donated Amount</th>
-              <th className='py-4 px-6 text-left'>Donator Ranks</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentDonators.map((donator) => (
-              <tr key={donator.id}>
-                <td className='py-3 px-6 border-b  border-gray-200'>
-                  <Image src={pack} alt={donator.name} className='inline-block mr-2' />
-                  {donator.name}
-                </td>
-                <td className='py-3 px-6 border-b border-gray-200'>{donator.type}</td>
-                <td className='py-3 px-6 border-b border-gray-200'>${donator.amount}</td>
-                <td className='py-3 px-6 border-b border-gray-200'>{donator.rank}</td>
+      <div className='w-full max-w-7xl px-4'>
+        <div className='w-full overflow-x-auto touch-auto'>
+          <table className='min-w-[600px] w-full'>
+            <thead className='text-[#005CFF] border-b border-gray-200 sfpromd '>
+              <tr>
+                <th className='py-4 px-6 text-left'>Donator Name</th>
+                <th className='py-4 px-6 text-left'>Donator Type</th>
+                <th className='py-4 px-6 text-left'>Donated Amount</th>
+                <th className='py-4 px-6 text-left'>Donator Ranks</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {currentDonators.map((donator) => (
+                <tr key={donator.id}>
+                  <td className='py-3 px-6 border-b border-gray-200 whitespace-nowrap'>
+                    <Image src={pack} alt={donator.name} className='inline-block mr-2' width={24} height={24} />
+                    {donator.name}
+                  </td>
+                  <td className='py-3 px-6 border-b border-gray-200 whitespace-nowrap'>{donator.type}</td>
+                  <td className='py-3 px-6 border-b border-gray-200 whitespace-nowrap'>${donator.amount}</td>
+                  <td className='py-3 px-6 border-b border-gray-200 whitespace-nowrap'>{donator.rank}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         <div className='flex justify-center mt-12'>
           <Pagination>

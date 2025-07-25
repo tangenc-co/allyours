@@ -18,7 +18,9 @@
   padding: 0;
   scroll-behavior: smooth;
 }
-
+.textblue{
+  color:#005CFF;
+}
 .textgray {
   color: #444444;
 }
@@ -85,3 +87,21 @@
     @apply bg-background text-foreground;
   }
 }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #005CFF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0041c4;
+}
+

@@ -58,13 +58,13 @@ export default function Donate() {
   ]
 
   return (
-    <div className='mt-[150px] max-w-7xl w-full px-5 mx-auto'>
+    <div className=' md:mt-[100px] lg:mt-[150px] max-w-7xl w-full px-5 mx-auto'>
       <p className='sfprobold mb-4'>Support Us</p>
       <div className='flex flex-col lg:flex-row justify-between gap-6 mb-[100px]'>
         <p className='text-[30px] lg:text-[48px] leading-[48px] lg:leading-[64px] font-medium text-[#151515] morangamd lg:w-1/2'>
           Specific Donation Can <br className='hidden lg:block' /> Give Huge Impact to Us.
         </p>
-        <p className='text-[#444444] text-[18px] lg:text-[20px] leading-[30px] lg:w-1/2'>
+        <p className='text-[#444444] sm:text-[14px] md:text-[16px] lg:text-[20px] lg:leading-[30px] lg:w-1/2 tracking-wide'>
           When you choose to contribute, you&apos;ve not just donating, you&apos;ve creating a ripple of change for
           present and future generations. Your journey through the Ascension of Impact lights the way for young minds to
           grow, learn, and contribute, while unlocking their hidden talents and skills.
