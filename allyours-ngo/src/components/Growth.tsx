@@ -3,17 +3,17 @@ export default function Growth() {
     {
       id: 1,
       percentage: '30%',
-      text: 'Participants satisfaction confirmed.',
+      text: 'Programs Complication ',
     },
     {
       id: 2,
       percentage: '50%',
-      text: 'Increase in attendees compared to last year.',
+      text: 'Volunteer Growth Increase',
     },
     {
       id: 3,
       percentage: '10%',
-      text: 'Of visitors keep coming back.',
+      text: 'Increase in Donor',
     },
   ]
 
