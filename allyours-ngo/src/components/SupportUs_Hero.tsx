@@ -128,7 +128,7 @@ export default function SupportUsHero() {
         <div className='flex flex-row justify-center gap-4 max-w-[400px] mx-auto'>
           <Dialog>
             <DialogTrigger asChild>
-              <button className='py-[14px] px-[24px] rounded-[24px] w-[183px] h-[47px] text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] transition-colors'>
+              <button className='py-[14px] text-center px-[24px] rounded-[24px] w-[137px] h-[47px] text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] transition-colors items-center flex justify-center'>
                 Donate Now
               </button>
             </DialogTrigger>
@@ -237,7 +237,7 @@ export default function SupportUsHero() {
               )}
             </DialogContent>
           </Dialog>
-          <button className='py-[14px] px-[24px] rounded-[24px] border border-[#000] w-[183px] h-[47px] text-[#000] bg-white text-[16px] hover:bg-[#f0f0f0] transition-colors'>
+          <button className='py-[14px] px-[24px] rounded-[24px] border border-[#B6B6B6] w-[125px] h-[47px] text-[#000] bg-[#F9F9F9] text-[16px] hover:bg-[#f0f0f0] transition-colors  items-center flex justify-center'>
             Talk to Us
           </button>
         </div>
@@ -254,7 +254,7 @@ export default function SupportUsHero() {
         width={44}
         className='absolute -top-[140px] right-0 hidden md:block lg:hidden'
       />
-      <div className=' justify-center text-[#005CFF] lg:mt-[150px] hidden lg:block '>
+      <div className='lg:flex items-center justify-center text-[#005CFF] lg:mt-[150px] hidden  '>
         <MouseIcon />
       </div>
     </div>

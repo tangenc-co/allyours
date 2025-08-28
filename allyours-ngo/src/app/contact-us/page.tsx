@@ -8,14 +8,14 @@ export default function ContactUs() {
     <div className='overflow-x-hidden'>
       <div className='text-center max-w-[1104px] mx-auto mt-[50px] sm:mt-[150px] px-4'>
         <p className='text-[32px]/[40px]  md:text-[58px] lg:text-[68px]/[80px] morangamd mb-[30px] '>How Can We Help You?</p>
-        <p className='text-[14px] md:text-lg text-[#444444] sfprorg mb-[30px] max-w-[700px] mx-auto'>
+        <p className='text-[20px]/[30px] md:text-lg text-[#444444] sfprorg mb-[30px] max-w-[650px] mx-auto'>
           Reach out to our operation and marketing teams for partnerships, organization and program-related questions
           and event inquiries. Contact us through ways below.
         </p>
       </div>
 
       <div className='max-w-6xl mx-auto mt-[50px] flex flex-col md:flex-row justify-between gap-5 px-4 md:px-6'>
-        <div className='w-full md:w-[50%] rounded-lg bg-white p-6 md:p-8 shadow-xl flex flex-col gap-5'>
+        <div className='w-full md:w-[50%] rounded-[24px] bg-white p-6 md:p-8 shadow-xl flex flex-col gap-5'>
           <div className='flex gap-2 items-center'>
             <Image src={SMS} alt='sms icon' />
             <p className='text-[#005CFF] sfprobold text-xl md:text-2xl'>Send Mail</p>
@@ -24,12 +24,12 @@ export default function ContactUs() {
             I&apos;d love to connect with you through email for a detailed conversation. Feel free to send a message
             anytime.
           </p>
-          <button className='py-[14px] px-[24px] rounded-[24px] w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF]'>
+          <button className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF]'>
             Send Message
           </button>
         </div>
 
-        <div className='w-full md:w-[50%] rounded-lg bg-white p-6 md:p-8 shadow-xl flex flex-col gap-5'>
+        <div className='w-full md:w-[50%]  bg-white p-6 md:p-8 shadow-xl flex flex-col gap-5 rounded-[24px]'>
           <div className='flex gap-2 items-center'>
             <Image src={Bag} alt='bag icon' />
             <p className='text-[#005CFF] sfprobold text-xl md:text-2xl'>Book A Meeting</p>
@@ -38,7 +38,7 @@ export default function ContactUs() {
             I&apos;d love to book a meeting for a more specific discussion. Please let me know a convenient time that
             works for you.
           </p>
-          <button className='py-[14px] px-[24px] rounded-[24px] w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF]'>
+          <button className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF]'>
             Book Now
           </button>
         </div>
@@ -52,8 +52,8 @@ export default function ContactUs() {
               inquiries, collaborations, and anything you need to move forward.
             </p>
             <div className='flex items-center gap-2'>
-              <p className='sfprorg text-[16px]'>Contact Us</p>
-              <Image src={Send} alt='send icon' />
+              <p className='sfprorg text-[16px] tracking-wider'>Contact Us</p>
+              <Image src={Send} alt='send icon' width={20} height={20} />
             </div>
           </div>
           <br />
@@ -64,8 +64,8 @@ export default function ContactUs() {
               efficiently.
             </p>
             <div className='flex items-center gap-2'>
-              <p className='sfprorg text-[16px]'>Contact Us</p>
-              <Image src={Send} alt='send icon' />
+              <p className='sfprorg text-[16px] tracking-wider'>Contact Us</p>
+              <Image src={Send} alt='send icon' width={20} height={20} />
             </div>
           </div>
         </div>

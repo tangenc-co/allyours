@@ -2,6 +2,7 @@ import CheckCircleBlue from '../../public/assets/check-circle-blue.png'
 import CheckCirleOrange from '../../public/assets/check-circle-orange.png'
 import CheckCirleGreen from '../../public/assets/check-circle-green.png'
 import CheckCirlePurple from '../../public/assets/check-circle-purple.png'
+import rightChevon from '../../public/assets/Icons.SVG/Outline Icons/chevron-right.svg'
 import handmoney from '../../public/assets/handmoney.png'
 import messages from '../../public/assets/messages.png'
 import Image from 'next/image'
@@ -59,7 +60,7 @@ export default function Donate() {
 
   return (
     <div className=' md:mt-[100px] lg:mt-[150px] max-w-7xl w-full px-5 mx-auto'>
-      <p className='sfprobold mb-4'>Support Us</p>
+      <p className='sfprobold mb-4 flex items-center'>Support Us <Image src={rightChevon} alt='Peekaboo illustration' width={24} height={22} /></p>
       <div className='flex flex-col lg:flex-row justify-between gap-6 mb-[100px]'>
         <p className='text-[30px] lg:text-[48px] leading-[48px] lg:leading-[64px] font-medium text-[#151515] morangamd lg:w-1/2'>
           Specific Donation Can <br className='hidden lg:block' /> Give Huge Impact to Us.
@@ -83,14 +84,21 @@ export default function Donate() {
               <p className='text-[24px] font-bold my-4 sfpromd'>{card.amount} Ks</p>
 
               <p className='text-[#444444] font-medium sfprorg'>What you get:</p>
-              <ul className='mt-4 space-y-3'>
-                {card.status.map((item, index) => (
-                  <li key={index} className='flex items-center text-[#444444] text-[16px]'>
-                    <Image src={card.circleIcon} alt='Check Icon' width={16} height={16} className='mr-2' />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+           <ul className='mt-4 space-y-3'>
+            {card.status.map((item, index) => (
+              <li key={index} className='flex items-center text-[#444444] text-[16px]'>
+                <Image
+                  src={card.circleIcon}
+                  alt='Check Icon'
+                  width={16}
+                  height={16}
+                  className='mr-2 w-4 h-4 object-contain'
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+
             </div>
 
             <div className='flex flex-col items-center sfprorg tracking-[1px] mt-6'>
