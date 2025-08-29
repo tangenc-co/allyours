@@ -34,7 +34,8 @@ export default function Section7() {
   ]
 
   return (
-    <div className='min-h-[100vh] xl:min-h-[120vh] text-center pt-[70px] md:pt-[120px]'>
+    // min-h-[100vh] xl:min-h-[120vh]
+    <div className='h-auto text-center pt-[70px] md:pt-[120px] pb-[60px] xl:pb-[80px]'>
       <p className='text-[16px] font-[600] mb-[20px]'>FAQs</p>
       <h2 className='morangamd text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[64px] mb-[40px] md:mb-[85px]'>Frequently Ask Questions</h2>
 

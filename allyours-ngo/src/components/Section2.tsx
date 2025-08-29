@@ -16,45 +16,45 @@ export default function Section2() {
       <Image src={tbleftblob} alt='left blob' width={56} height={56} className='absolute top-[40px] hidden md:block xl:hidden' />
       <Image src={mbleftblob} alt='left blob' width={20} height={26} className='absolute top-[250px] block md:hidden' />
       
-      <div className='flex flex-col items-center xl:flex-row justify-around max-w-[1121px] min-h-[374px] mx-auto'>
-        <div>
-          <div>
-            <p className='text-[14px] md:text-[16px] w-[188px] h-[22px] sfprobold flex items-center mb-[8px]'>Join With Us  <Image src={rightchevon} alt='Peekaboo illustration' width={24} height={22} />
+      <div className='flex flex-col items-center xl:flex-row justify-around max-w-[1121px] min-h-[374px] mx-auto xl:items-end'>
+        <div className='h-[374px]'>
+          <div >
+            <p className='text-[14px] md:text-[16px] w-[188px] h-[22px] sfprobold flex items-center mb-[40px]'>Join With Us  <Image src={rightchevon} alt='Peekaboo illustration' width={24} height={22} />
             </p>
-            <p className=' text-[24px]/[30px] md:text-[32px] lg:text-[48px] mb-[30px] font-[500] text-[#005cff] morangamd'>For you and for all of us</p>
+            <p className=' text-[24px]/[30px] md:text-[32px] lg:text-[48px] mb-[40px] font-[500] text-[#005cff] morangamd'>For you and for all of us</p>
           </div>
 
-          <Image src={joinwithus} alt='Peekaboo illustration' width={0} height={0} className='w-[325px] md:w-full h-[240px] rounded-[24px] ' />
+          <Image src={joinwithus} alt='Peekaboo illustration' width={0} height={0} className='w-[325px] md:w-full h-[240px] rounded-[24px]' />
         </div>
 
-        <div className='max-w-[545px] min-h-[341px]'>
+        <div className='max-w-[545px] h-[341px] '>
           <div>
-            <p className='textgray text-[14px] max-w-[333px] md:max-w-[545px] md:text-[16px] lg:text-[20px]/[30px] font-[400px] mt-[40px] xl:mt-0 mb-[45px] sfprorg mx-auto'>
+            <p className='textgray text-[14px] max-w-[333px] md:max-w-[545px] md:text-[16px] lg:text-[20px]/[30px] font-[400px] xl:mt-0 mb-[20px] sfprorg mx-auto'>
               Our main purpose is to establish a meaningful network and empower small project leaders to flourish,
               connect, and grow together. A creative community where people don&apos;t have to do it all alone.
             </p>
-            <div className='flex flex-col md:flex-row items-center md:items-start justify-around mx-auto mb-[20px] space-y-[30px] md:space-y-0'>
-              <div className='max-w-[320px] md:max-w-[200px] h-[110px] px-[8px] text-center mx-auto md:mx-0'>
+            <div className='flex flex-col md:flex-row items-center md:items-start justify-around mx-auto space-y-[30px] md:space-y-0 mt-[21px]'>
+              <div className='max-w-[320px] md:max-w-[200px] h-[110px] px-[8px] text-center lg:text-start mx-auto md:mx-0'>
                 <p className='text-[48px] font-[500] morangamd'>90%</p>
-                <p className='textgray text-[16px] w-full md:max-w-[170px] sfprorg'>Participants satisfaction confirmed</p>
+                <p className='textgray text-[16px] w-full md:max-w-[150px] sfprorg'>Participants satisfaction confirmed</p>
               </div>
 
-              <div className='max-w-[320px] md:max-w-[200px] h-[110px] px-[8px] text-center md:text-left mx-auto md:mx-0'>
+              <div className='max-w-[320px] md:max-w-[200px] h-[110px] px-[8px] text-start md:text-left mx-auto md:mx-0'>
                 <p className='text-[48px] font-[500] morangamd'>30%</p>
                 <p className='textgray text-[16px] w-full md:max-w-[170px] sfprorg'>
                   Increase in attendees compared to last year.
                 </p>
               </div>
 
-              <div className='max-w-[320px] md:max-w-[200px] h-[110px] px-[8px] text-center md:text-left mx-auto md:mx-0'>
+              <div className='max-w-[320px] md:max-w-[200px] h-[110px] px-[8px] text-center lg:text-start md:text-left mx-auto md:mx-0'>
                 <p className='text-[48px] font-[500] morangamd'>10%</p>
-                <p className='textgray text-[16px] w-full md:max-w-[170px] sfprorg'>Of visitors keep coming back.</p>
+                <p className='textgray text-[16px] w-full md:max-w-[150px] sfprorg'>Of visitors keep coming back.</p>
               </div>
             </div>
 
           </div>
 
-          <div className='flex flex-col md:flex-row justify-around max-w-[350px] gap-[14px] md:gap-[24px]'>
+          <div className='flex flex-col md:flex-row justify-around max-w-[350px] gap-[4px] mt-[40px]'>
             <button className='py-[10px] px-[14px]  rounded-[24px] border-none w-full md:w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#005cff] text-[16px]/auto'>
               Join Our Programs
             </button>

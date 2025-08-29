@@ -151,6 +151,33 @@ export default function Carousel() {
           width: 32px;
           background-color: #fe6835;
         }
+
+        .swiper-button-prev{
+          width: 48px !important;
+          height: 48px !important;
+          margin-left: -40px !important;
+        }
+        .swiper-button-next {
+          width: 48px !important;
+          height: 48px !important;
+          margin-right: -30px !important;
+        }
+        @media (max-width: 768px) {
+          .swiper-button-prev,
+          .swiper-button-next {
+            width: 24px !important;
+            height: 24px !important;
+            
+          }
+        }
+
+        @media (max-width: 80rem) {
+          .swiper-button-prev,
+          .swiper-button-next {
+            margin: 0px !important;
+            
+          }
+        }
       `}</style>
     </div>
     
