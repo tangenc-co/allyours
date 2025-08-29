@@ -12,7 +12,7 @@ export default function DownloadPDF() {
           our organization, empowered communities, and advanced creative initiatives. From fostering inclusive growth to
           opening new opportunities, each step reflects our shared commitment to sustainable change.
         </p>
-        <button className='bg-[#FE6835] rounded-[24px]  border-[1px] border-[#fff] w-[187px] flex items-center gap-[8px] py-[14px] px-[24px] cursor-pointer'>
+        <button className='bg-[#FE6835] hover:bg-[#FE865D] active:bg-[#B44A26] rounded-[24px]  border-[1px] border-[#fff] w-[187px] flex items-center gap-[8px] py-[14px] px-[24px] cursor-pointer'>
           <Image src={document} alt='pdf' width={24} height={24} />
           <span className='sfprorg text-[16px] text-[#f9f9f9]'>Download PDF</span>
         </button>

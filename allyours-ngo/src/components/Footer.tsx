@@ -30,7 +30,7 @@ export default function Footer() {
                 className='p-[12px] rounded-[24px] w-[363px] h-[48px] border border-[#b6b6b6] text-[16px] bg-transparent placeholder:text-[#cccccc] mb-3 sm:mb-0'
                 placeholder='Enter your email'
               />
-              <button className='bg-[#f9f9f9] w-[121px] h-[48px] rounded-[32px] border border-[#b6b6b6] text-[16px] text-[#151515] sfprorg sm:ml-[15px] ml-[10px]'>
+              <button className='bg-[#f9f9f9] w-[121px] h-[48px] rounded-[32px] border border-[#b6b6b6] hover:bg-[#E8E8E8] active:bg-[#B6B6B6] text-[16px] text-[#151515] sfprorg sm:ml-[15px] ml-[10px]'>
                 Subscribe
               </button>
             </div>

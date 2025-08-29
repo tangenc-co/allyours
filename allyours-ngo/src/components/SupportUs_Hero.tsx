@@ -211,7 +211,7 @@ export default function SupportUsHero() {
                       <button
                         type='submit'
                         disabled={isSubmitting}
-                        className={`bg-[#005CFF] rounded-full text-white py-[14px] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`bg-[#005CFF] rounded-full hover:bg-[#337DFF] active:bg-[#0041B5] text-white py-[14px] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                       >
                         {isSubmitting ? 'Processing...' : 'Continue'}
                       </button>
@@ -229,7 +229,7 @@ export default function SupportUsHero() {
                   </DialogHeader>
 
                   <div className='mt-6 flex justify-center'>
-                    <button className='bg-[#005CFF] hover:bg-[#337DFF] transition-colors text-white  px-6 py-3 rounded-full w-[300px]'>
+                    <button className='bg-[#005CFF] hover:bg-[#337DFF] active:bg-[#0041B5] transition-colors text-white  px-6 py-3 rounded-full w-[300px]'>
                        Donation Report
                     </button>
                   </div>
@@ -237,7 +237,7 @@ export default function SupportUsHero() {
               )}
             </DialogContent>
           </Dialog>
-          <button className='py-[14px] px-[24px] rounded-[24px] border border-[#B6B6B6] w-[125px] h-[47px] text-[#000] bg-[#F9F9F9] text-[16px] hover:bg-[#f0f0f0] transition-colors  items-center flex justify-center'>
+          <button className='py-[14px] px-[24px] rounded-[24px]  w-[125px] h-[47px] text-[#000]  border border-[#b6b6b6] hover:bg-[#E8E8E8] active:bg-[#B6B6B6]  transition-colors  items-center flex justify-center'>
             Talk to Us
           </button>
         </div>

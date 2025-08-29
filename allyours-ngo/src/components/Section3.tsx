@@ -41,10 +41,10 @@ export default function Section3() {
           lively atmosphere, a vibrant and immersive experience.
         </p>
         <div className='flex justify-between w-[262px] h-[47px] mx-auto mt-4'>
-          <button className='py-[10px] px-[14px] rounded-[24px] border-none w-[116px] h-[47px] cursor-pointer text-[#fff] bg-[#fe6835] text-[16px] hover:bg-[#e55b2d] transition-colors'>
+          <button className='py-[10px] px-[14px] rounded-[24px] border-none w-[116px] h-[47px] cursor-pointer text-[#fff] bg-[#fe6835] text-[16px] hover:bg-[#e55b2d] '>
             Join Now
           </button>
-          <button className='rounded-[24px] border-[1px] border-[#b6b6b6] w-[130px] h-[47px] cursor-pointer text-[#000] bg-[#fff] text-[16px] hover:bg-gray-100 transition-colors'>
+          <button className='rounded-[24px] border-[1px] border-[#b6b6b6] w-[130px] h-[47px] cursor-pointer text-[#000] bg-[#fff] text-[16px]  hover:bg-[#E8E8E8] active:bg-[#B6B6B6] '>
             Know More
           </button>
         </div>

@@ -24,7 +24,7 @@ export default function ContactUs() {
             I&apos;d love to connect with you through email for a detailed conversation. Feel free to send a message
             anytime.
           </p>
-          <button className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF]'>
+          <button className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] active:bg-[#0041B5]'>
             Send Message
           </button>
         </div>
@@ -38,7 +38,7 @@ export default function ContactUs() {
             I&apos;d love to book a meeting for a more specific discussion. Please let me know a convenient time that
             works for you.
           </p>
-          <button className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF]'>
+          <button className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] active:bg-[#0041B5]'>
             Book Now
           </button>
         </div>

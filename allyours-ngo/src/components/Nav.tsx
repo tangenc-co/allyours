@@ -124,7 +124,7 @@ export default function Nav() {
           </NavigationMenu>
 
           <Link href='/contact-us'>
-            <button className='bg-[#005CFF] px-[24px] py-[8px] rounded-[32px] text-[#F9F9F9] text-[16px]'>
+            <button className='bg-[#005CFF] hover:bg-[#337DFF] active:bg-[#0041B5] px-[24px] py-[8px] rounded-[32px] text-[#F9F9F9] text-[16px]'>
               Contact
             </button>
           </Link>

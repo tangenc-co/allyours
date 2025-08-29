@@ -102,11 +102,11 @@ export default function Donate() {
             </div>
 
             <div className='flex flex-col items-center sfprorg tracking-[1px] mt-6'>
-              <button className='bg-[#005CFF] text-white py-3 px-6 rounded-[24px] w-full flex items-center justify-center'>
+              <button className='bg-[#005CFF] hover:bg-[#337DFF] active:bg-[#0041B5] text-white py-3 px-6 rounded-[24px] w-full flex items-center justify-center'>
                 <Image src={handmoney} alt='Donate' width={24} height={24} className='mr-2' />
                 Donate Now
               </button>
-              <button className='mt-4 bg-[#F9F9F9] text-[#151515] py-3 px-6 rounded-[24px] w-full border border-[#B6B6B6] flex items-center justify-center'>
+              <button className='mt-4 bg-[#F9F9F9] text-[#151515] py-3 px-6 rounded-[24px] w-full border  border-[#b6b6b6] hover:bg-[#E8E8E8] active:bg-[#B6B6B6]  flex items-center justify-center'>
                 <Image src={messages} alt='Talk' width={24} height={24} className='mr-2' />
                 Talk to Us
               </button>
