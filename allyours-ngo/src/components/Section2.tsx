@@ -54,13 +54,8 @@ export default function Section2() {
 
           </div>
 
-<<<<<<< Updated upstream
-          <div className='flex flex-col md:flex-row justify-around max-w-[350px] gap-[4px] mt-[40px]'>
-            <button className='py-[10px] px-[14px]  rounded-[24px] border-none w-full md:w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#005cff] text-[16px]/auto'>
-=======
           <div className='flex flex-col md:flex-row justify-around max-w-[350px] gap-[14px] md:gap-[24px]'>
             <button className='py-[10px] px-[14px]  rounded-[24px] border-none w-full md:w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#005cff] active:bg-[#0041B5] hover:bg-[#337DFF] text-[16px]/auto'>
->>>>>>> Stashed changes
               Join Our Programs
             </button>
             <button className='rounded-[24px] border-[1px] border-[#b6b6b6] w-full md:w-[143px] h-[47px] cursor-pointer text-[#000] bg-[#fff]  hover:bg-[#E8E8E8] active:bg-[#B6B6B6] text-[16px]'>
