@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import house from '../../public/assets/Icons.SVG/Two Tone Icons/house-2.svg'
 import emoji from '../../public/assets/Icons.SVG/Two Tone Icons/emoji-normal.svg'
@@ -10,22 +12,43 @@ import avatar4 from '../../public/assets/Images/Avatar4.png'
 import avatar5 from '../../public/assets/Images/Avatar5.png'
 import plus from '../../public/assets/Icons.SVG/Outline Icons/add.svg'
 import document from '../../public/assets/Icons.SVG/Outline Icons/document-download.svg'
+import { useEffect, useState } from 'react'
 
 export default function Section6() {
-  const members = [
-    { name: 'Laixen', image: avatar2, role:'role', link:'https://linkedin.com' },
-    { name: 'Chaw Hsu', image: avatar1, role:'role', link:'https://linkedin.com' },
-    { name: 'Marie Khine', image: avatar3, role:'role', link:'https://linkedin.com' },
-    { name: 'Ei Phyu Sin Win (Cathryn)', image: avatar4, role:'role', link:'https://linkedin.com' },
-    { name: 'Hein Htet Kyaw', image: avatar5, role:'role', link:'https://linkedin.com' },
-    { name: 'Eris', image: avatar4, role:'role', link:'https://linkedin.com' },
-    { name: 'Theint', image: avatar, role:'role', link:'https://linkedin.com' },
-    { name: 'May Lawoon Lwin', image: avatar2, role:'role', link:'https://linkedin.com' },
-    { name: 'Agnes', image: avatar5, role:'role', link:'https://linkedin.com' },
-    { name: 'Khine Nwe Linn', image: avatar2, role:'role', link:'https://linkedin.com' },
-    { name: 'Ko Zie', image: avatar3, role:'role', link:'https://linkedin.com' },
-    { name: 'Ko Nu', image: avatar1, role:'role', link:'https://linkedin.com' },
-  ]
+  type Member = { id: number; name: string; role: string; link: string; image: any }
+  const [members, setMembers] = useState<Member[]>([])
+
+  useEffect(() => {
+    let isMounted = true
+    const fetchMembers = async () => {
+      try {
+        const res = await fetch('http://localhost:1337/api/members?populate=*')
+        if (!res.ok) return
+        const json = await res.json()
+        const baseUrl = 'http://localhost:1337'
+        const items: Member[] = (json?.data || []).map((item: any, index: number) => {
+          const thumbPath = item?.image?.formats?.thumbnail?.url || item?.image?.url || null
+          const imageUrl = thumbPath
+            ? (String(thumbPath).startsWith('http') ? String(thumbPath) : `${baseUrl}${String(thumbPath)}`)
+            : null
+          return {
+            id: item.id,
+            name: item.name,
+            role: item.role,
+            link: item.url,
+            image: imageUrl ?? [avatar, avatar1, avatar2, avatar3, avatar4, avatar5][index % 6],
+          }
+        })
+        if (isMounted) setMembers(items)
+      } catch (e) {
+        // silently ignore for now
+      }
+    }
+    fetchMembers()
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     <>
@@ -80,6 +103,7 @@ export default function Section6() {
       width={56}
       height={56}
       className="size-[40px] md:size-[56px] rounded-full cursor-pointer"
+      unoptimized
     />
     <span className="text-[14px] md:text-[16px] sfprorg font-[700] w-[100%] ml-[5px] md:ml-[20px] text-start">
       {member.name}
@@ -95,6 +119,7 @@ export default function Section6() {
           width={60}
           height={60}
           className="rounded-full"
+          unoptimized
         />
 
         {/* Info */}

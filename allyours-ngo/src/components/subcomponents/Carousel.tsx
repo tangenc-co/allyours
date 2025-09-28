@@ -7,49 +7,44 @@ import Image from 'next/image'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Swiper as SwiperType } from 'swiper'
 
-const testimonials = [
-  {
-    name: 'Name',
-    image: 'user1.jpg',
-    rating: 5,
-    review:
-      'allyours has truly transformed how I connect with the design community. Their support and resources helped me grow both professionally and personally, opening doors I never imagined possible.',
-  },
-  {
-    name: 'Name',
-    image: 'user2.jpg',
-    rating: 4,
-    review:
-      'allyours has truly transformed how I connect with the design community. Their support and resources helped me grow both professionally and personally, opening doors I never imagined possible.',
-  },
-  {
-    name: 'Name',
-    image: 'user3.jpg',
-    rating: 5,
-    review:
-      'allyours has truly transformed how I connect with the design community. Their support and resources helped me grow both professionally and personally, opening doors I never imagined possible.',
-  },
-  {
-    name: 'Name',
-    image: 'user4.jpg',
-    rating: 3,
-    review:
-      'allyours has truly transformed how I connect with the design community. Their support and resources helped me grow both professionally and personally, opening doors I never imagined possible.',
-  },
-  {
-    name: 'Name',
-    image: 'user5.jpg',
-    rating: 4,
-    review:
-      'allyours has truly transformed how I connect with the design community. Their support and resources helped me grow both professionally and personally, opening doors I never imagined possible.',
-  },
-]
+type Testimonial = {
+  id: number
+  name: string
+  review: string
+  rating: number
+}
 
 export default function Carousel() {
   const swiperRef = useRef<SwiperType | null>(null)
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+
+  useEffect(() => {
+    let isMounted = true
+    const fetchTestimonials = async () => {
+      try {
+        const res = await fetch('http://localhost:1337/api/testimonials')
+        if (!res.ok) return
+        const json = await res.json()
+        const items: Testimonial[] = (json?.data || []).map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          review: item.review,
+          rating: item.rating,
+          //rating: Math.max(0, Math.min(5, Number(item.rating ?? 0))),
+        }))
+        if (isMounted) setTestimonials(items)
+      } catch (err) {
+        // silently fail for now; could add UI error state if needed
+      }
+    }
+    fetchTestimonials()
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     
@@ -79,8 +74,8 @@ export default function Carousel() {
         className='mx-auto'
         onSwiper={(swiper: SwiperType) => (swiperRef.current = swiper)}
       >
-        {testimonials.map((testimonial, index) => (
-          <SwiperSlide key={index}  >
+        {testimonials.map((testimonial) => (
+          <SwiperSlide key={testimonial.id}  >
             <div className=' mt-[60px] mb-[10px] md:mb-[65px] h-[242px] max-w-[508px] flex flex-col justify-start gap-[15px] mx-auto'>
               <div className='flex justify-start items-center'>
                 <img
