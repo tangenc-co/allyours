@@ -30,6 +30,9 @@
         "videos",
         "audios"
       ]
+    },
+    "position": {
+      "type": "string"
     }
   }
 }
