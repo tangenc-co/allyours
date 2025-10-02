@@ -1,0 +1,7 @@
+/* Hide settings menu item using more reliable selectors */
+/* a[aria-label="Setting"], a[href*="Marketplace"],
+a[aria-label="Settings"], a[href*="Marketplace"],
+nav a[href*="settings"], nav a[href*="marketplace"],
+nav a[href*="admin/settings"], a[href*="admin/Marketplace"]  {
+    display: none !important;
+} */
