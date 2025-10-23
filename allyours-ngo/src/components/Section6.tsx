@@ -13,6 +13,7 @@ import avatar5 from '../../public/assets/Images/Avatar5.png'
 import plus from '../../public/assets/Icons.SVG/Outline Icons/add.svg'
 import document from '../../public/assets/Icons.SVG/Outline Icons/document-download.svg'
 import { useEffect, useState } from 'react'
+import { getApiUrl, getImageUrl } from '../config/api'
 
 export default function Section6() {
   type Member = { id: number; name: string; role: string; link: string; image: any }
@@ -22,15 +23,12 @@ export default function Section6() {
     let isMounted = true
     const fetchMembers = async () => {
       try {
-        const res = await fetch('http://localhost:1337/api/members?populate=*')
+        const res = await fetch(getApiUrl('/members?populate=*'))
         if (!res.ok) return
         const json = await res.json()
-        const baseUrl = 'http://localhost:1337'
         const items: Member[] = (json?.data || []).map((item: any, index: number) => {
           const thumbPath = item?.image?.formats?.thumbnail?.url || item?.image?.url || null
-          const imageUrl = thumbPath
-            ? (String(thumbPath).startsWith('http') ? String(thumbPath) : `${baseUrl}${String(thumbPath)}`)
-            : null
+          const imageUrl = thumbPath ? getImageUrl(String(thumbPath)) : null
           return {
             id: item.id,
             name: item.name,

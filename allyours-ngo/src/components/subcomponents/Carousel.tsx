@@ -9,12 +9,15 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { useEffect, useRef, useState } from 'react'
 import { Swiper as SwiperType } from 'swiper'
+import { getApiUrl, getImageUrl } from '../../config/api'
 
 type Testimonial = {
   id: number
   name: string
   review: string
   rating: number
+  position: string
+  image: string | null
 }
 
 export default function Carousel() {
@@ -25,16 +28,22 @@ export default function Carousel() {
     let isMounted = true
     const fetchTestimonials = async () => {
       try {
-        const res = await fetch('http://localhost:1337/api/testimonials')
+        const res = await fetch(getApiUrl('/testimonials?populate=*'))
         if (!res.ok) return
         const json = await res.json()
-        const items: Testimonial[] = (json?.data || []).map((item: any) => ({
-          id: item.id,
-          name: item.name,
-          review: item.review,
-          rating: item.rating,
-          //rating: Math.max(0, Math.min(5, Number(item.rating ?? 0))),
-        }))
+        const items: Testimonial[] = (json?.data || []).map((item: any) => {
+          const imagePath = item?.image?.formats?.thumbnail?.url || item?.image?.url || null
+          const imageUrl = imagePath ? getImageUrl(String(imagePath)) : null
+          
+          return {
+            id: item.id,
+            name: item.name,
+            review: item.review,
+            rating: item.rating,
+            position: item.position,
+            image: imageUrl,
+          }
+        })
         if (isMounted) setTestimonials(items)
       } catch (err) {
         // silently fail for now; could add UI error state if needed
@@ -78,13 +87,22 @@ export default function Carousel() {
           <SwiperSlide key={testimonial.id}  >
             <div className=' mt-[60px] mb-[10px] md:mb-[65px] h-[242px] max-w-[508px] flex flex-col justify-start gap-[15px] mx-auto'>
               <div className='flex justify-start items-center'>
-                <img
-                  src='https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'
-                  className='size-[40px] md:size-[56px] bg-blue-200 rounded-full mr-0 md:mr-4'
-                />
+                {testimonial.image ? (
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className='size-[40px] md:size-[56px] bg-blue-200 rounded-full mr-0 md:mr-4 object-cover'
+                  />
+                ) : (
+                  <img
+                    src='https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'
+                    alt={testimonial.name}
+                    className='size-[40px] md:size-[56px] bg-blue-200 rounded-full mr-0 md:mr-4'
+                  />
+                )}
                 <div className='text-[14px] md:text-[15px] ml-[10px]'>
                   <p className='sfprorg text-[#f9f9f9]'>{testimonial.name}</p>
-                  <p className='sfprorg text-[#f9f9f9]'>Status...</p>
+                  <p className='sfprorg text-[#f9f9f9]'>{testimonial.position}</p>
                 </div>
               </div>
               <div className='flex mt-1'>

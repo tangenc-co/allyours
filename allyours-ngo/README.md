@@ -48,7 +48,15 @@ yarn install
 pnpm install
 ```
 
-3. Run the development server:
+3. Set up environment variables:
+
+Create a `.env.local` file in the root directory:
+
+```bash
+NEXT_PUBLIC_API_ENDPOINT=https://allyours.onrender.com/api
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
@@ -58,7 +66,7 @@ yarn dev
 pnpm dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Project Structure
 
@@ -97,10 +105,23 @@ allyours-ngo/
 - Modify global styles in `src/app/globals.css`
 - Update component-specific styles as needed
 
+### Environment Variables
+
+The application uses the following environment variables:
+
+- `NEXT_PUBLIC_API_ENDPOINT`: The base URL for the API endpoint (defaults to `https://allyours.onrender.com/api`)
+
+You can create a `.env.local` file to override the default API endpoint:
+
+```bash
+NEXT_PUBLIC_API_ENDPOINT=https://your-custom-api.com/api
+```
+
 ### Configuration
 
 - Update `next.config.js` for additional Next.js configuration
 - Modify `package.json` for dependencies and scripts
+- Update API configuration in `src/config/api.ts`
 
 ## Deployment
 
