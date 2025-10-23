@@ -5,3 +5,10 @@ nav a[href*="settings"], nav a[href*="marketplace"],
 nav a[href*="admin/settings"], a[href*="admin/Marketplace"]  {
     display: none !important;
 } */
+/* Force theme colors via CSS */
+button[type="submit"], 
+a[href*="admin"], 
+.nav-link {
+    background-color: #0066cc !important;
+    color: white !important;
+}
