@@ -85,7 +85,15 @@ The donation report PDF is **not** configured via env: place **`public/donation-
 
 ### Authentication (admin)
 
-Enable **Email/Password** and **Google** under Authentication → Sign-in method. Add **authorized domains** (e.g. `localhost`, your production host).
+Enable **Email/Password** and **Google** under Authentication → Sign-in method.
+
+Under Authentication → **Settings** → **Authorized domains**, add every host users open in the browser, or Google / email sign-in will fail (often with **`auth/unauthorized-domain`**):
+
+- `localhost` (dev)  
+- Your **custom domain** (e.g. `yourdomain.com` and `www.yourdomain.com` if used)  
+- Your **Vercel preview URL** pattern: `*.vercel.app` is not one entry — add each concrete hostname you use, e.g. `your-project.vercel.app` and any **production** / **preview** domains Vercel shows in the deployment.
+
+In **Google Cloud Console** (APIs & Services → Credentials → your Web client OAuth 2.0 client), ensure **Authorized JavaScript origins** include `https://yourdomain.com`, `https://www.yourdomain.com`, and `https://your-project.vercel.app` so the Google popup can complete.
 
 Admin routes under `/admin` (except `/admin/login` and `/admin/sign-up`) require a valid **session cookie** issued after sign-in (`POST /api/auth/session`). Sign-out calls `POST /api/auth/logout`.
 

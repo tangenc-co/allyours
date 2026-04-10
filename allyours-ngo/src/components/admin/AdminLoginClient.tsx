@@ -9,21 +9,11 @@ import {
   signInWithPopup,
 } from 'firebase/auth'
 import { getFirebaseAuth } from '@/lib/firebase'
+import {
+  FIREBASE_AUTH_SIGN_IN_MESSAGES,
+  firebaseAuthErrorMessage,
+} from '@/lib/firebase-auth-ui-messages'
 import { establishServerSession } from '@/components/admin/establish-session'
-
-function mapAuthError(code: string): string {
-  const m: Record<string, string> = {
-    'auth/invalid-email': 'Invalid email address.',
-    'auth/user-disabled': 'This account has been disabled.',
-    'auth/user-not-found': 'No account found for that email.',
-    'auth/wrong-password': 'Incorrect password.',
-    'auth/invalid-credential': 'Email or password is incorrect.',
-    'auth/popup-closed-by-user': 'Sign-in was cancelled.',
-    'auth/popup-blocked': 'Pop-up was blocked. Allow pop-ups for this site.',
-    'auth/account-exists-with-different-credential': 'An account already exists with a different sign-in method.',
-  }
-  return m[code] ?? 'Sign-in failed. Try again.'
-}
 
 export default function AdminLoginClient({ nextPath }: { nextPath: string }) {
   const router = useRouter()
@@ -57,7 +47,13 @@ export default function AdminLoginClient({ nextPath }: { nextPath: string }) {
       await afterFirebaseSignIn(() => cred.user.getIdToken())
     } catch (err: unknown) {
       const code = typeof err === 'object' && err && 'code' in err ? String((err as { code: string }).code) : ''
-      setError(mapAuthError(code))
+      setError(
+        firebaseAuthErrorMessage(
+          code,
+          FIREBASE_AUTH_SIGN_IN_MESSAGES,
+          `Sign-in failed. Try again.${code ? ` (${code})` : ''}`,
+        ),
+      )
     } finally {
       setBusy(false)
     }
@@ -78,7 +74,13 @@ export default function AdminLoginClient({ nextPath }: { nextPath: string }) {
       await afterFirebaseSignIn(() => cred.user.getIdToken())
     } catch (err: unknown) {
       const code = typeof err === 'object' && err && 'code' in err ? String((err as { code: string }).code) : ''
-      setError(mapAuthError(code))
+      setError(
+        firebaseAuthErrorMessage(
+          code,
+          FIREBASE_AUTH_SIGN_IN_MESSAGES,
+          `Sign-in failed. Try again.${code ? ` (${code})` : ''}`,
+        ),
+      )
     } finally {
       setBusy(false)
     }

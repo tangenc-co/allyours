@@ -9,19 +9,11 @@ import {
   signInWithPopup,
 } from 'firebase/auth'
 import { getFirebaseAuth } from '@/lib/firebase'
+import {
+  FIREBASE_AUTH_SIGN_UP_MESSAGES,
+  firebaseAuthErrorMessage,
+} from '@/lib/firebase-auth-ui-messages'
 import { establishServerSession } from '@/components/admin/establish-session'
-
-function mapAuthError(code: string): string {
-  const m: Record<string, string> = {
-    'auth/email-already-in-use': 'That email is already registered. Sign in instead.',
-    'auth/invalid-email': 'Invalid email address.',
-    'auth/weak-password': 'Password should be at least 6 characters.',
-    'auth/popup-closed-by-user': 'Sign-in was cancelled.',
-    'auth/popup-blocked': 'Pop-up was blocked. Allow pop-ups for this site.',
-    'auth/account-exists-with-different-credential': 'An account already exists with a different sign-in method.',
-  }
-  return m[code] ?? 'Could not create account. Try again.'
-}
 
 export default function AdminSignUpClient({ nextPath }: { nextPath: string }) {
   const router = useRouter()
@@ -64,7 +56,13 @@ export default function AdminSignUpClient({ nextPath }: { nextPath: string }) {
       await afterFirebaseSignIn(() => cred.user.getIdToken())
     } catch (err: unknown) {
       const code = typeof err === 'object' && err && 'code' in err ? String((err as { code: string }).code) : ''
-      setError(mapAuthError(code))
+      setError(
+        firebaseAuthErrorMessage(
+          code,
+          FIREBASE_AUTH_SIGN_UP_MESSAGES,
+          `Could not create account. Try again.${code ? ` (${code})` : ''}`,
+        ),
+      )
     } finally {
       setBusy(false)
     }
@@ -85,7 +83,13 @@ export default function AdminSignUpClient({ nextPath }: { nextPath: string }) {
       await afterFirebaseSignIn(() => cred.user.getIdToken())
     } catch (err: unknown) {
       const code = typeof err === 'object' && err && 'code' in err ? String((err as { code: string }).code) : ''
-      setError(mapAuthError(code))
+      setError(
+        firebaseAuthErrorMessage(
+          code,
+          FIREBASE_AUTH_SIGN_UP_MESSAGES,
+          `Could not create account. Try again.${code ? ` (${code})` : ''}`,
+        ),
+      )
     } finally {
       setBusy(false)
     }
