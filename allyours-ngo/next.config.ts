@@ -1,7 +1,11 @@
 import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
 import type { NextConfig } from 'next'
 
-initOpenNextCloudflareForDev()
+// Only for `next dev`. On `next build` (e.g. Vercel) this would spawn Wrangler/miniflare
+// and can fail with EPIPE when the adapter thinks dev context init should run.
+if (process.env.NODE_ENV !== 'production') {
+  initOpenNextCloudflareForDev()
+}
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ['firebase-admin', 'jose', 'jwks-rsa'],

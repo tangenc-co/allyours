@@ -176,6 +176,29 @@ allyours-ngo/
 1. Build: `npm run build`.  
 2. Start: `npm run start` (or the platform’s Next.js preset, which does this for you).
 
+#### Custom domain: Vercel + Cloudflare DNS
+
+Use this when **DNS stays on Cloudflare** but the app is hosted on **Vercel**.
+
+**Step 1 — Add the domain in Vercel**
+
+1. Open the project in the [Vercel dashboard](https://vercel.com/dashboard) → **Settings** → **Domains**.  
+2. Add both **`yourdomain.com`** and **`www.yourdomain.com`** (replace with your real domain).  
+3. Vercel will show the exact **DNS targets** it expects. Prefer those values if they differ from the examples below (Vercel may update guidance).
+
+**Step 2 — Create records in Cloudflare**
+
+In the Cloudflare dashboard → your zone → **DNS** → **Records**:
+
+| Type | Name | Value | Purpose |
+|------|------|--------|---------|
+| **A** | `@` (root) | `76.76.21.21` | Apex → Vercel |
+| **CNAME** | `www` | `cname.vercel-dns.com` | `www` → Vercel |
+
+**Cloudflare proxy:** For these records, use **DNS only** (grey cloud) unless you have a deliberate setup where both Vercel and Cloudflare SSL/proxy are configured together. **DNS only** avoids common SSL and certificate issues while Vercel terminates HTTPS for your app.
+
+**Firebase:** Add **`yourdomain.com`** and **`www.yourdomain.com`** under Firebase Console → Authentication → **Authorized domains** if you use sign-in on production.
+
 ### Cloudflare (Workers + OpenNext)
 
 This repo is configured for **[OpenNext’s Cloudflare adapter](https://opennext.js.org/cloudflare)** (`@opennextjs/cloudflare`) with **`nodejs_compat`**, so **API routes**, **server actions**, and **`firebase-admin`** can run on **Cloudflare Workers** — not on **static Cloudflare Pages** alone.
