@@ -24,48 +24,47 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  
 } from '@/components/ui/dropdown-menu'
 
-export default function Nav() {
- 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isMenuSubOpen,setIsMenuSubOpen]=useState(false);
+type MobilePanel = 'main' | 'languages' | 'allyours'
 
+export default function Nav() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [mobilePanel, setMobilePanel] = useState<MobilePanel>('main')
+
+  /** Always point at homepage — bare `#section` only works on `/`. */
   const allyoursItems = [
     {
       id: 1,
-      icon: Chat ,
+      icon: Chat,
       text: 'for u & all of us',
-      to: '#section2'
+      to: '/#section2',
     },
     {
       id: 2,
-      icon: Heart ,
+      icon: Heart,
       text: 'Peekaboo',
-      to: '#section3'
+      to: '/#section3',
     },
     {
       id: 3,
-      icon:  ChatGreen ,
+      icon: ChatGreen,
       text: 'Our Podcast',
-      to:'#section4'
+      to: '/#section4',
     },
     {
       id: 4,
-      icon: Laptop ,
+      icon: Laptop,
       text: 'Vision & Mission',
-      to:'#section5'
+      to: '/#section5',
     },
     {
       id: 5,
-      icon:  Members ,
+      icon: Members,
       text: 'Meet the team',
-      to:'#section6'
+      to: '/#section6',
     },
-  ]
+  ] as const
 
   return (
     <nav className='sticky top-[20px] bg-[#F9F9F9] border border-[#B6B6B6] rounded-full max-w-[350px] sm:max-w-[550px] mx-auto px-4 py-[10px] z-[50]'>
@@ -80,10 +79,12 @@ export default function Nav() {
             </DropdownMenuTrigger>
             <DropdownMenuContent className='bg-white mt-2' align='center'>
               {allyoursItems.map((item) => (
-                <div key={item.id} className='flex items-center gap-2 px-2 py-1 cursor-pointer hover:bg-gray-50'>
-                  <Image src={item.icon} alt={item.text} width={24} height={24} />
-                  <DropdownMenuItem> <a href={item.to}>{item.text}</a></DropdownMenuItem>
-                </div>
+                <DropdownMenuItem key={item.id} asChild>
+                  <Link href={item.to} className='flex cursor-pointer items-center gap-2'>
+                    <Image src={item.icon} alt='' width={24} height={24} />
+                    <span>{item.text}</span>
+                  </Link>
+                </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
@@ -136,7 +137,7 @@ export default function Nav() {
             open={isMobileMenuOpen}
             onOpenChange={(open) => {
               setIsMobileMenuOpen(open)
-              if (!open) setIsMenuSubOpen(false)
+              if (!open) setMobilePanel('main')
             }}
           >
             <DropdownMenuTrigger asChild>
@@ -148,24 +149,44 @@ export default function Nav() {
               side='bottom'
               align='end'
             >
-              {!isMenuSubOpen ? (
+              {mobilePanel === 'main' ? (
                 <>
+                  <DropdownMenuItem
+                    className='cursor-pointer'
+                    onSelect={(e) => {
+                      e.preventDefault()
+                      setMobilePanel('allyours')
+                    }}
+                  >
+                    allyours
+                  </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href='/support-us'>Support Us</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <DropdownMenuSub>
-                      <DropdownMenuSubTrigger onClick={() => setIsMenuSubOpen(true)}>
-                        <Link href=''>Languages</Link>
-                      </DropdownMenuSubTrigger>
-                    </DropdownMenuSub>
+                  <DropdownMenuItem
+                    className='cursor-pointer'
+                    onSelect={(e) => {
+                      e.preventDefault()
+                      setMobilePanel('languages')
+                    }}
+                  >
+                    Languages
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href='/contact-us'>Contact</Link>
                   </DropdownMenuItem>
                 </>
-              ) : (
+              ) : mobilePanel === 'languages' ? (
                 <>
+                  <DropdownMenuItem
+                    className='cursor-pointer text-[#005CFF]'
+                    onSelect={(e) => {
+                      e.preventDefault()
+                      setMobilePanel('main')
+                    }}
+                  >
+                    ← Back
+                  </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href='/en'>English</Link>
                   </DropdownMenuItem>
@@ -175,6 +196,26 @@ export default function Nav() {
                   <DropdownMenuItem asChild>
                     <Link href='/th'>Thai</Link>
                   </DropdownMenuItem>
+                </>
+              ) : (
+                <>
+                  <DropdownMenuItem
+                    className='cursor-pointer text-[#005CFF]'
+                    onSelect={(e) => {
+                      e.preventDefault()
+                      setMobilePanel('main')
+                    }}
+                  >
+                    ← Back
+                  </DropdownMenuItem>
+                  {allyoursItems.map((item) => (
+                    <DropdownMenuItem key={item.id} asChild>
+                      <Link href={item.to} className='flex cursor-pointer items-center gap-2'>
+                        <Image src={item.icon} alt='' width={24} height={24} />
+                        <span>{item.text}</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
                 </>
               )}
             </DropdownMenuContent>

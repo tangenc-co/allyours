@@ -9,44 +9,23 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { useEffect, useRef, useState } from 'react'
 import { Swiper as SwiperType } from 'swiper'
-import { getApiUrl, getImageUrl } from '../../config/api'
-
-type Testimonial = {
-  id: number
-  name: string
-  review: string
-  rating: number
-  position: string
-  image: string | null
-}
+import { getTestimonials, type Testimonial } from '@/services/firestore'
 
 export default function Carousel() {
   const swiperRef = useRef<SwiperType | null>(null)
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     let isMounted = true
     const fetchTestimonials = async () => {
       try {
-        const res = await fetch(getApiUrl('/testimonials?populate=*'))
-        if (!res.ok) return
-        const json = await res.json()
-        const items: Testimonial[] = (json?.data || []).map((item: any) => {
-          const imagePath = item?.image?.formats?.thumbnail?.url || item?.image?.url || null
-          const imageUrl = imagePath ? getImageUrl(String(imagePath)) : null
-          
-          return {
-            id: item.id,
-            name: item.name,
-            review: item.review,
-            rating: item.rating,
-            position: item.position,
-            image: imageUrl,
-          }
-        })
+        const items = await getTestimonials()
         if (isMounted) setTestimonials(items)
-      } catch (err) {
-        // silently fail for now; could add UI error state if needed
+      } catch {
+        // Firestore empty or offline; optional UI error state later
+      } finally {
+        if (isMounted) setLoaded(true)
       }
     }
     fetchTestimonials()
@@ -55,18 +34,28 @@ export default function Carousel() {
     }
   }, [])
 
+  // Loop needs enough slides vs slidesPerView (2 at ≥1024px); otherwise Swiper warns and misbehaves.
+  const loopEnabled = testimonials.length >= 4
+  const autoplayOpts =
+    testimonials.length > 1 ? { delay: 3000, disableOnInteraction: false } : false
+
+  if (!loaded || testimonials.length === 0) {
+    return null
+  }
+
   return (
     
       <div className='relative max-w-[1100px] mx-auto px-[60px] '>
       <Swiper
+        key={testimonials.map((t) => t.id).join('-')}
         modules={[Autoplay, Navigation, Pagination]}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={autoplayOpts}
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         }}
         pagination={{ clickable: true }}
-        loop={true}
+        loop={loopEnabled}
         breakpoints={{
           0: {
             slidesPerView: 1,
@@ -84,7 +73,7 @@ export default function Carousel() {
         onSwiper={(swiper: SwiperType) => (swiperRef.current = swiper)}
       >
         {testimonials.map((testimonial) => (
-          <SwiperSlide key={testimonial.id}  >
+          <SwiperSlide key={testimonial.id}>
             <div className=' mt-[60px] mb-[10px] md:mb-[65px] h-[242px] max-w-[508px] flex flex-col justify-start gap-[15px] mx-auto'>
               <div className='flex justify-start items-center'>
                 {testimonial.image ? (

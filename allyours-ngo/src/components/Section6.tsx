@@ -11,38 +11,54 @@ import avatar3 from '../../public/assets/Images/Avatar3.png'
 import avatar4 from '../../public/assets/Images/Avatar4.png'
 import avatar5 from '../../public/assets/Images/Avatar5.png'
 import plus from '../../public/assets/Icons.SVG/Outline Icons/add.svg'
-import document from '../../public/assets/Icons.SVG/Outline Icons/document-download.svg'
+import DownloadPDF from '@/components/DownloadPDF'
 import { useEffect, useState } from 'react'
-import { getApiUrl, getImageUrl } from '../config/api'
+import { getMembers, type Member as FirestoreMember } from '@/services/firestore'
+
+const FALLBACK_AVATARS = [avatar, avatar1, avatar2, avatar3, avatar4, avatar5]
+
+type MemberRow = {
+  id: string
+  name: string
+  role: string
+  link: string
+  image: string | typeof avatar
+}
 
 export default function Section6() {
-  type Member = { id: number; name: string; role: string; link: string; image: any }
-  const [members, setMembers] = useState<Member[]>([])
+  const [members, setMembers] = useState<MemberRow[]>([])
 
   useEffect(() => {
     let isMounted = true
-    const fetchMembers = async () => {
+    const mapRows = (rows: FirestoreMember[]): MemberRow[] =>
+      rows.map((m, index) => ({
+        id: m.id,
+        name: m.name,
+        role: m.role,
+        link: m.link || '#',
+        image: (m.imageUrl as string | null) ?? FALLBACK_AVATARS[index % FALLBACK_AVATARS.length],
+      }))
+
+    const load = async () => {
       try {
-        const res = await fetch(getApiUrl('/members?populate=*'))
-        if (!res.ok) return
-        const json = await res.json()
-        const items: Member[] = (json?.data || []).map((item: any, index: number) => {
-          const thumbPath = item?.image?.formats?.thumbnail?.url || item?.image?.url || null
-          const imageUrl = thumbPath ? getImageUrl(String(thumbPath)) : null
-          return {
-            id: item.id,
-            name: item.name,
-            role: item.role,
-            link: item.url,
-            image: imageUrl ?? [avatar, avatar1, avatar2, avatar3, avatar4, avatar5][index % 6],
-          }
-        })
-        if (isMounted) setMembers(items)
-      } catch (e) {
-        // silently ignore for now
+        const res = await fetch('/api/members', { cache: 'no-store' })
+        if (res.ok) {
+          const data = (await res.json()) as { members?: FirestoreMember[] }
+          const rows = data.members ?? []
+          if (isMounted) setMembers(mapRows(rows))
+          return
+        }
+      } catch {
+        // try client Firestore below
+      }
+      try {
+        const rows = await getMembers()
+        if (isMounted) setMembers(mapRows(rows))
+      } catch {
+        // ignore
       }
     }
-    fetchMembers()
+    load()
     return () => {
       isMounted = false
     }
@@ -129,9 +145,9 @@ export default function Section6() {
         {/* LinkedIn Icon */}
         <div className="pl-3 border-l border-white/50 flex items-center min-h-[50px]">
           <a
-            href={member.link}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={member.link.startsWith('http') ? member.link : '#'}
+            target={member.link.startsWith('http') ? '_blank' : undefined}
+            rel={member.link.startsWith('http') ? 'noopener noreferrer' : undefined}
             className="ml-3 hover:scale-110 transition"
           >
             <svg
@@ -168,21 +184,7 @@ export default function Section6() {
           </div>
         </div>
       </div>
-      <div className='min-h-[300px] bg-[#005CFF] text-start py-[44px] md:py-[92px] flex flex-col items-center w-full px-[32px] lg:px-[92px]'>
-        <div className='max-w-[337px] sm:max-w-[1256px] flex flex-col gap-[32px] text-[#f9f9f9] text-start'>
-          <h2 className='morangamd text-[24px]/[30px] md:text-[32px]/[40px] lg:text-[48px]/[64px]'>Know Our Achievements</h2>
-          <p className='sfprorg text-[14px] md:text-[18px]/[40px] lg:text-[20px]/[30px]'>
-            Download and explore our journey of past achievements and the meaningful impact we&apos;ve made in communities.
-            From empowering youth and fostering inclusive growth to creating real opportunities for change, our
-            milestones reflect a shared commitment to building a brighter, sustainable futures for creative
-            industry.{' '}
-          </p>
-          <button className='bg-[#FE6835] hover:bg-[#FE865D] active:bg-[#B44A26] rounded-[24px]  border-[1px] border-[#fff] w-[187px] flex items-center gap-[8px] py-[14px] px-[24px] cursor-pointer'>
-            <Image src={document} alt='pdf' width={24} height={24} />
-            <span className='sfprorg text-[16px] text-[#f9f9f9]'>Download PDF</span>
-          </button>
-        </div>
-      </div>
+      <DownloadPDF variant='achievements' />
     </>
   )
 }

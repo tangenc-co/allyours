@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Pagination,
   PaginationContent,
@@ -12,43 +12,55 @@ import {
 import pack from '../../../public/assets/Relume.png'
 import Image from 'next/image'
 
+export type DonationRow = {
+  id: string
+  name: string
+  type: string
+  amount: number
+  rank: string
+}
+
 export default function Table() {
-  const donators = [
-    { id: 1, name: 'Kyaw Kyaw', type: 'Corporate Donator', amount: 100, rank: 'Advocate' },
-    { id: 2, name: 'Anonymous Donor', type: 'Corporate Donator', amount: 100, rank: 'Alliance' },
-    { id: 3, name: 'U Shwe Moe', type: 'Free Donator', amount: 100, rank: 'None' },
-    { id: 4, name: 'Wai Lin Phyo', type: 'Free Donator', amount: 100, rank: 'Ambassador' },
-    { id: 5, name: 'Anonymous Donor', type: 'Free Donator', amount: 100, rank: 'None' },
-    { id: 6, name: 'John Doe', type: 'Free Donator', amount: 100, rank: 'None' },
-    { id: 7, name: 'Jane Smith', type: 'Corporate Donator', amount: 150, rank: 'Alliance' },
-    { id: 8, name: 'Aung Aung', type: 'Free Donator', amount: 50, rank: 'None' },
-    { id: 9, name: 'Mya Mya', type: 'Free Donator', amount: 70, rank: 'None' },
-    { id: 10, name: 'Moe Moe', type: 'Corporate Donator', amount: 300, rank: 'Advocate' },
-    { id: 11, name: 'Tun Tun', type: 'Free Donator', amount: 40, rank: 'None' },
-    { id: 12, name: 'Soe Soe', type: 'Corporate Donator', amount: 200, rank: 'Ambassador' },
-    { id: 13, name: 'Min Min', type: 'Free Donator', amount: 80, rank: 'None' },
-    { id: 14, name: 'Hla Hla', type: 'Corporate Donator', amount: 250, rank: 'Alliance' },
-    { id: 15, name: 'Zaw Zaw', type: 'Free Donator', amount: 60, rank: 'None' },
-    { id: 16, name: 'Su Su', type: 'Corporate Donator', amount: 180, rank: 'Advocate' },
-    { id: 17, name: 'Ko Ko', type: 'Free Donator', amount: 90, rank: 'None' },
-    { id: 18, name: 'Nyein Nyein', type: 'Corporate Donator', amount: 220, rank: 'Ambassador' },
-    { id: 19, name: 'Thida', type: 'Free Donator', amount: 55, rank: 'None' },
-    { id: 20, name: 'Win Win', type: 'Corporate Donator', amount: 275, rank: 'Alliance' },
-    { id: 21, name: 'Htun Htun', type: 'Free Donator', amount: 45, rank: 'None' },
-    { id: 22, name: 'Khin Khin', type: 'Corporate Donator', amount: 320, rank: 'Advocate' },
-    { id: 23, name: 'Aye Aye', type: 'Free Donator', amount: 65, rank: 'None' },
-    { id: 24, name: 'Zin Zin', type: 'Corporate Donator', amount: 150, rank: 'Alliance' },
-    { id: 25, name: 'Hla Hla', type: 'Free Donator', amount: 75, rank: 'None' },
-    { id: 26, name: 'Maung Maung', type: 'Corporate Donator', amount: 400, rank: 'Advocate' },
-    { id: 27, name: 'Nanda', type: 'Free Donator', amount: 30, rank: 'None' },
-    { id: 28, name: 'Kyaing Kyaing', type: 'Corporate Donator', amount: 500, rank: 'Ambassador' },
-    { id: 29, name: 'Zaw Lin', type: 'Free Donator', amount: 120, rank: 'None' },
-    { id: 30, name: 'Aung Myint', type: 'Corporate Donator', amount: 600, rank: 'Alliance' },
-  ]
+  const [donators, setDonators] = useState<DonationRow[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let active = true
+    ;(async () => {
+      setLoading(true)
+      try {
+        const res = await fetch('/api/donations?report=1', { cache: 'no-store' })
+        if (!res.ok) {
+          if (active) {
+            setDonators([])
+            setLoading(false)
+          }
+          return
+        }
+        const data = (await res.json()) as { donations?: DonationRow[] }
+        if (active) {
+          setDonators(data.donations ?? [])
+          setLoading(false)
+        }
+      } catch {
+        if (active) {
+          setDonators([])
+          setLoading(false)
+        }
+      }
+    })()
+    return () => {
+      active = false
+    }
+  }, [])
 
   const [currentPage, setCurrentPage] = useState(1)
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [donators.length])
   const rowsPerPage = 5
-  const totalPages = Math.ceil(donators.length / rowsPerPage)
+  const totalPages = Math.max(1, Math.ceil(donators.length / rowsPerPage))
 
   const startIndex = (currentPage - 1) * rowsPerPage
   const currentDonators = donators.slice(startIndex, startIndex + rowsPerPage)
@@ -102,6 +114,25 @@ export default function Table() {
     })
   }
 
+  if (loading) {
+    return (
+      <div className='flex flex-col items-center mt-10'>
+        <p className='text-[#444444] sfprorg'>Loading donors…</p>
+      </div>
+    )
+  }
+
+  if (!donators.length) {
+    return (
+      <div className='flex flex-col items-center mt-10'>
+        <p className='text-[#444444] sfprorg text-center max-w-md'>
+          No public donations to show yet. Approved donations appear here after an admin enables &quot;Show in donor report&quot; in{' '}
+          <span className='whitespace-nowrap'>/admin/donations</span>.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <div className='flex flex-col items-center mt-10'>
       <div className='w-full max-w-7xl px-4'>
@@ -123,7 +154,7 @@ export default function Table() {
                     {donator.name}
                   </td>
                   <td className='py-3 px-6 border-b border-gray-200 whitespace-nowrap'>{donator.type}</td>
-                  <td className='py-3 px-6 border-b border-gray-200 whitespace-nowrap'>${donator.amount}</td>
+                  <td className='py-3 px-6 border-b border-gray-200 whitespace-nowrap'>Ks {donator.amount.toLocaleString()}</td>
                   <td className='py-3 px-6 border-b border-gray-200 whitespace-nowrap'>{donator.rank}</td>
                 </tr>
               ))}

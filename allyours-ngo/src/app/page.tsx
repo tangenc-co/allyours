@@ -5,9 +5,12 @@ import Section6 from '@/components/Section6'
 import Section7 from '@/components/Section7'
 import Section2 from '@/components/Section2'
 import Hero from '@/components/Hero'
+import HomeHashScroll from '@/components/HomeHashScroll'
+
 export default function Home() {
   return (
     <div className='overflow-x-hidden' suppressHydrationWarning>
+      <HomeHashScroll />
       <Hero />
       <Section2 />
       <Section3 />

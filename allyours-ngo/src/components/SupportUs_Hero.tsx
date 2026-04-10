@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import leftblob from '../../public/assets/Illustration.SVG/leftblob-SupportUs.svg'
 import rightblob from '../../public/assets/Illustration.SVG/rightblob-SupportUs.svg'
 import tbleftblob from '../../public/assets/Illustration.SVG/tbleftblob-SupportUs.svg'
@@ -18,25 +19,30 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { useState, ChangeEvent, FormEvent } from 'react'
+import { uploadImageToCloudinary } from '@/services/cloudinary'
+import { trackDonationIntent, trackSupportCta } from '@/services/analytics'
 
 interface DonatorData {
   donatorName: string
-  amount: number
+  amount: string
   screenshot: File | null
   isAnonymous: boolean
 }
+
 export default function SupportUsHero() {
   const [amountError, setAmountError] = useState<string>('')
   const [fileError, setFileError] = useState<string>('')
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const [submitError, setSubmitError] = useState<string>('')
+  const [isPending, setIsPending] = useState<boolean>(false)
+  const [submitted, setSubmitted] = useState<boolean>(false)
 
   const [donatorData, setDonatorData] = useState<DonatorData>({
     donatorName: '',
-    amount: 0,
+    amount: '',
     screenshot: null,
     isAnonymous: false,
   })
-  console.log(isSubmitting)
+
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     setFileError('')
     const file = event.target.files?.[0]
@@ -74,33 +80,59 @@ export default function SupportUsHero() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if (!donatorData.amount) {
-      setAmountError('Amount is required')
-    } else if (isNaN(Number(donatorData.amount))) {
-      setAmountError('Invalid Amount!')
-    } else {
-      setAmountError('')
+    setAmountError('')
+    setFileError('')
+    setSubmitError('')
+
+    const rawAmount = donatorData.amount.replace(/,/g, '').trim()
+    const amountNum = Number(rawAmount)
+    if (!rawAmount || !Number.isFinite(amountNum) || amountNum <= 0) {
+      setAmountError('Enter a valid amount')
+      return
     }
+
     if (!donatorData.screenshot) {
       setFileError('Payment screenshot is required')
-    } else {
-      setFileError('')
+      return
     }
-    setIsSubmitting(true)
+
+    if (!donatorData.isAnonymous && !donatorData.donatorName.trim()) {
+      setSubmitError('Enter your name or donate anonymously.')
+      return
+    }
+
+    setIsPending(true)
+    trackDonationIntent('free_amount')
+    trackSupportCta('donate_now')
 
     try {
-      const formData = new FormData()
-      formData.append('donatorName', donatorData.isAnonymous ? 'Anonymous' : donatorData.donatorName)
-      formData.append('amount', donatorData.amount.toString())
-      if (donatorData.screenshot) {
-        formData.append('screenshot', donatorData.screenshot)
+      const proofUrl = await uploadImageToCloudinary(donatorData.screenshot)
+      const name = donatorData.isAnonymous ? 'Anonymous' : donatorData.donatorName.trim()
+      const res = await fetch('/api/donations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          amount: amountNum,
+          donatorType: 'Free Donator',
+          rank: 'None',
+          source: 'hero',
+          paymentProofUrl: proofUrl,
+        }),
+      })
+      const data = (await res.json()) as { ok?: boolean; error?: string }
+      if (!res.ok || !data.ok) {
+        setSubmitError(data.error || 'Could not save donation. Try again.')
+        setIsPending(false)
+        return
       }
-
-     
-    } catch (err) {
-      console.log(err)
+      setSubmitted(true)
+    } catch {
+      setSubmitError('Upload or network failed. Try again.')
     }
+    setIsPending(false)
   }
+
   return (
     <div className='relative mx-auto md:mt-[100px] overflow-hidden px-4 mt-[50px]'>
       <Image
@@ -126,23 +158,33 @@ export default function SupportUsHero() {
           community, purpose, and opportunity. Your support helps shape a stronger future for the industry.
         </p>
         <div className='flex flex-row justify-center gap-4 max-w-[400px] mx-auto'>
-          <Dialog>
+          <Dialog
+            onOpenChange={(open) => {
+              if (!open) {
+                setSubmitted(false)
+                setSubmitError('')
+                setDonatorData({ donatorName: '', amount: '', screenshot: null, isAnonymous: false })
+                setAmountError('')
+                setFileError('')
+              }
+            }}
+          >
             <DialogTrigger asChild>
               <button className='py-[14px] text-center px-[24px] rounded-[24px] w-[137px] h-[47px] text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] transition-colors items-center flex justify-center'>
                 Donate Now
               </button>
             </DialogTrigger>
             <DialogContent className='sm:max-w-[500px] rounded-lg px-[50px]'>
-              {!isSubmitting ? (
+              {!submitted ? (
                 <>
                   <DialogHeader className='mt-5'>
                     <DialogTitle>Be a donator of allyours</DialogTitle>
-                    <DialogDescription>Fill the information to donate.</DialogDescription>
+                    <DialogDescription>Fill the information to donate. Amount in Ks.</DialogDescription>
                   </DialogHeader>
                   <form onSubmit={handleSubmit}>
                     <div className='grid gap-4'>
                       <div className='grid gap-2'>
-                        <label htmlFor='' className='sfprobold text-[#151515] text-[16px] tracking-wide'>
+                        <label htmlFor='donatorName' className='sfprobold text-[#151515] text-[16px] tracking-wide'>
                           Your Name
                         </label>
                         <input
@@ -157,14 +199,16 @@ export default function SupportUsHero() {
                         />
                       </div>
                       <div className='grid gap-2'>
-                        <label htmlFor='' className='sfprobold text-[#151515] text-[16px] tracking-wide'>
-                          Amount
+                        <label htmlFor='amount' className='sfprobold text-[#151515] text-[16px] tracking-wide'>
+                          Amount (Ks)
                         </label>
                         <input
                           type='text'
                           id='amount'
                           name='amount'
-                          placeholder='Enter Amount'
+                          inputMode='decimal'
+                          placeholder='e.g. 50000'
+                          value={donatorData.amount}
                           onChange={handleInputChange}
                           className='rounded-[20px] border border-[#B6B6B6] px-4 py-2 focus:outline-none'
                         />
@@ -176,17 +220,14 @@ export default function SupportUsHero() {
                           checked={donatorData.isAnonymous}
                           onCheckedChange={handleSwitchChange}
                         />
-                        <label
-                          htmlFor='Donate Anonymously'
-                          className='sfprobold text-[#151515] text-[16px] tracking-wide'
-                        >
+                        <label htmlFor='isAnonymous' className='sfprobold text-[#151515] text-[16px] tracking-wide'>
                           Donate Anonymously
                         </label>
                       </div>
                       {donatorData.screenshot ? (
                         <div className='border border-gray-400 py-2 px-2 flex justify-between'>
                           <span>{donatorData.screenshot.name}</span>
-                          <button onClick={handleRemove}>
+                          <button type='button' onClick={handleRemove}>
                             <Image src={RemoveIcon} alt='remove' />
                           </button>
                         </div>
@@ -207,13 +248,14 @@ export default function SupportUsHero() {
                         </div>
                       )}
                       {fileError && <span className='text-red-500 text-sm'>{fileError}</span>}
+                      {submitError && <span className='text-red-500 text-sm'>{submitError}</span>}
 
                       <button
                         type='submit'
-                        disabled={isSubmitting}
-                        className={`bg-[#005CFF] rounded-full hover:bg-[#337DFF] active:bg-[#0041B5] text-white py-[14px] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        disabled={isPending}
+                        className={`bg-[#005CFF] rounded-full hover:bg-[#337DFF] active:bg-[#0041B5] text-white py-[14px] ${isPending ? 'opacity-50 cursor-not-allowed' : ''}`}
                       >
-                        {isSubmitting ? 'Processing...' : 'Continue'}
+                        {isPending ? 'Processing...' : 'Continue'}
                       </button>
                     </div>
                   </form>
@@ -222,22 +264,29 @@ export default function SupportUsHero() {
                 <>
                   <DialogHeader className='mt-8 flex flex-col items-center text-center space-y-4'>
                     <Image src={TickCircle} alt='Success Icon' className='w-12 h-12' />
-                    <DialogTitle className=''> Successfully Donate</DialogTitle>
+                    <DialogTitle>Successfully recorded</DialogTitle>
                     <DialogDescription className='px-12'>
-                      Thank you for your donation! Check your email for the certificate.
+                      Thank you. Your donation will appear in the public donor report after an admin approves it.
                     </DialogDescription>
                   </DialogHeader>
 
                   <div className='mt-6 flex justify-center'>
-                    <button className='bg-[#005CFF] hover:bg-[#337DFF] active:bg-[#0041B5] transition-colors text-white  px-6 py-3 rounded-full w-[300px]'>
-                       Donation Report
-                    </button>
+                    <Link
+                      href='/support-us#donators-report'
+                      className='bg-[#005CFF] hover:bg-[#337DFF] active:bg-[#0041B5] transition-colors text-white px-6 py-3 rounded-full w-[300px] text-center'
+                    >
+                      Donation Report
+                    </Link>
                   </div>
                 </>
               )}
             </DialogContent>
           </Dialog>
-          <button className='py-[14px] px-[24px] rounded-[24px]  w-[125px] h-[47px] text-[#000]  border border-[#b6b6b6] hover:bg-[#E8E8E8] active:bg-[#B6B6B6]  transition-colors  items-center flex justify-center'>
+          <button
+            type='button'
+            className='py-[14px] px-[24px] rounded-[24px]  w-[125px] h-[47px] text-[#000]  border border-[#b6b6b6] hover:bg-[#E8E8E8] active:bg-[#B6B6B6]  transition-colors  items-center flex justify-center'
+            onClick={() => trackSupportCta('talk_to_us')}
+          >
             Talk to Us
           </button>
         </div>

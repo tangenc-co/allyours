@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import Script from 'next/script'
+import { Suspense } from 'react'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import GA4RouteTracker from '@/components/GA4RouteTracker'
+
+const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -53,6 +58,22 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={` ${geistSans.variable} ${geistMono.variable} antialiased bg-[#f9f9f9]`} suppressHydrationWarning>
+        {gaId ? (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy='afterInteractive' />
+            <Script id='google-analytics' strategy='afterInteractive'>
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        ) : null}
+        <Suspense fallback={null}>
+          <GA4RouteTracker />
+        </Suspense>
         <Nav />
         {children}
         <Footer />

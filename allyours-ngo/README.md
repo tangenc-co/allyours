@@ -153,6 +153,12 @@ For support, email or create an issue in this repository.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+Add new members in "/admin/members/new"
+
+Add podcasts in "/admin/podcasts/new"
+
+Add donation in "/admin/donations"
+
 ---
 
 Built with ❤️ for Allyours NGO
