@@ -54,8 +54,11 @@ Open [http://localhost:3000](http://localhost:3000).
 | Command | Purpose |
 |---------|---------|
 | `npm run dev` | Development server |
-| `npm run build` | Production build |
-| `npm run start` | Run production server locally |
+| `npm run build` | Production Next.js build (Node / Vercel-style hosts) |
+| `npm run build:cf` | OpenNext bundle for **Cloudflare Workers** (`wrangler` / CI) |
+| `npm run preview` | Build and preview locally in the Workers runtime |
+| `npm run deploy` | Build and deploy with Wrangler (requires `wrangler login`) |
+| `npm run start` | Run production server locally (Node) |
 | `npm run lint` | ESLint |
 | `npm run format` | Prettier (write) |
 
@@ -165,10 +168,38 @@ allyours-ngo/
 ## Deployment
 
 1. Set **environment variables** on the host (match `.env.local` / `.env.example`).  
-2. Build: `npm run build`.  
-3. Start: `npm run start` (or use the platform’s Next.js preset).
+2. Build and run according to the platform (see below).  
+3. Ensure **authorized domains** in Firebase include your production hostname.
 
-**Vercel** (and similar) work well: connect the repo, add env vars, deploy. Ensure **authorized domains** in Firebase include your production hostname.
+### Vercel (and other Node hosts)
+
+1. Build: `npm run build`.  
+2. Start: `npm run start` (or the platform’s Next.js preset, which does this for you).
+
+### Cloudflare (Workers + OpenNext)
+
+This repo is configured for **[OpenNext’s Cloudflare adapter](https://opennext.js.org/cloudflare)** (`@opennextjs/cloudflare`) with **`nodejs_compat`**, so **API routes**, **server actions**, and **`firebase-admin`** can run on **Cloudflare Workers** — not on **static Cloudflare Pages** alone.
+
+**Do not** use the old **Pages** flow with **Build output directory** `.vercel/output/static` and **`npm run build` only**; that path is for **`@cloudflare/next-on-pages`**, and this app is not compatible with that Edge-only model.
+
+**Local / CLI**
+
+- One-shot: `npm run deploy` (runs `opennextjs-cloudflare build` then `wrangler deploy`).  
+- Requires [Wrangler](https://developers.cloudflare.com/workers/wrangler/) auth (`wrangler login`).
+
+**Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/)**
+
+1. Create or use a **Workers** project (not a static **Pages** site expecting a folder upload).  
+2. **Root directory:** `allyours-ngo` (if the monorepo root is the Git root).  
+3. **Build command:** `npm ci && npm run build:cf`  
+4. **Deploy:** follow Cloudflare’s Workers CI flow (Wrangler uses **`wrangler.jsonc`** at the app root; output is **`.open-next/`**, not `.vercel/output/static`).  
+5. Add the same env vars as production in **Build variables and secrets** so `next build` can prerender; see [OpenNext env vars on Workers](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds).
+
+**`next.config`:** `serverExternalPackages` includes `firebase-admin`, `jose`, and `jwks-rsa` so JWT / Admin SDK dependencies resolve correctly under workerd. After deploy, smoke-test **admin login**, **session cookies**, and **`/api/*`**.
+
+### Legacy: `@cloudflare/next-on-pages` and static Pages
+
+The classic **`next-on-pages`** adapter required **Edge** everywhere and **does not work** with this app’s **`firebase-admin`** usage without a major redesign. Prefer **OpenNext on Workers** (above) or a **Node** host.
 
 After changing **Firestore rules**, run **`firebase deploy --only firestore:rules`** from a machine with the Firebase CLI logged in.
 
