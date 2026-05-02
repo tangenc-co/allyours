@@ -93,7 +93,7 @@ export default function Nav() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className='text-[16px] '>Languages</NavigationMenuTrigger>
+                {/* <NavigationMenuTrigger className='text-[16px] '>Languages</NavigationMenuTrigger> */}
                 <NavigationMenuContent className='bg-white '>
                   <ul className='p-4 w-[150px] '>
                     <li>
@@ -163,7 +163,7 @@ export default function Nav() {
                   <DropdownMenuItem asChild>
                     <Link href='/support-us'>Support Us</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem
+                  {/* <DropdownMenuItem
                     className='cursor-pointer'
                     onSelect={(e) => {
                       e.preventDefault()
@@ -171,7 +171,7 @@ export default function Nav() {
                     }}
                   >
                     Languages
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
                   <DropdownMenuItem asChild>
                     <Link href='/contact-us'>Contact</Link>
                   </DropdownMenuItem>

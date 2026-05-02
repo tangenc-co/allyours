@@ -284,8 +284,9 @@ export default function SupportUsHero() {
           </Dialog>
           <button
             type='button'
+            onClick={() => window.location.href = 'mailto:finance@allurs.cc?subject=Support Request&body=Hello Finance Team,'}
             className='py-[14px] px-[24px] rounded-[24px]  w-[125px] h-[47px] text-[#000]  border border-[#b6b6b6] hover:bg-[#E8E8E8] active:bg-[#B6B6B6]  transition-colors  items-center flex justify-center'
-            onClick={() => trackSupportCta('talk_to_us')}
+            // onClick={() => trackSupportCta('talk_to_us')}
           >
             Talk to Us
           </button>

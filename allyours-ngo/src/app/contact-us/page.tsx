@@ -24,9 +24,12 @@ export default function ContactUs() {
             I&apos;d love to connect with you through email for a detailed conversation. Feel free to send a message
             anytime.
           </p>
-          <button className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] active:bg-[#0041B5]'>
+          <a
+            href='mailto:inquiry@allurs.cc?subject=Reaching%20Out%20To%20You&body=Dear%20allyours%20team%2C'
+            className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] active:bg-[#0041B5] no-underline'
+          >
             Send Message
-          </button>
+          </a>
         </div>
 
         <div className='w-full md:w-[50%]  bg-white p-6 md:p-8 shadow-xl flex flex-col gap-5 rounded-[24px]'>
@@ -38,9 +41,12 @@ export default function ContactUs() {
             I&apos;d love to book a meeting for a more specific discussion. Please let me know a convenient time that
             works for you.
           </p>
-          <button className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] active:bg-[#0041B5]'>
+          <a
+            href='mailto:inquiry@allurs.cc?subject=Reaching%20Out%20To%20You&body=Dear%20allyours%20team%2C'
+            className='py-[14px] px-[24px] rounded-[24px] flex justify-center items-center w-[155px] h-[47px] cursor-pointer text-white bg-[#005cff] text-[16px] hover:bg-[#337DFF] active:bg-[#0041B5] no-underline'
+          >
             Book Now
-          </button>
+          </a>
         </div>
       </div>
       <div className='bg-[#005CFF] mt-[50px] py-12 md:py-20'>
@@ -52,7 +58,11 @@ export default function ContactUs() {
               inquiries, collaborations, and anything you need to move forward.
             </p>
             <div className='flex items-center gap-2'>
-              <p className='sfprorg text-[16px] tracking-wider'>Contact Us</p>
+              <a
+                href='mailto:marketing@allurs.cc?subject=Reaching%20Out%20To%20You&body=Dear%20allyours%20team%2C'
+              >
+                Contact Us
+              </a>
               <Image src={Send} alt='send icon' width={20} height={20} />
             </div>
           </div>
@@ -64,7 +74,12 @@ export default function ContactUs() {
               efficiently.
             </p>
             <div className='flex items-center gap-2'>
-              <p className='sfprorg text-[16px] tracking-wider'>Contact Us</p>
+              <a
+                href='mailto:operations@allurs.cc?subject=Reaching%20Out%20To%20You&body=Dear%20allyours%20team%2C'
+                className='sfprorg text-[16px] tracking-wider no-underline'
+              >
+                Contact Us
+              </a>
               <Image src={Send} alt='send icon' width={20} height={20} />
             </div>
           </div>

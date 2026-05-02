@@ -80,6 +80,15 @@
 
 
 @layer base {
+  /* Sticky nav: top-5 (20px) + pill; mobile row is a bit taller (logo + menu control) */
+  html {
+    scroll-padding-top: calc(5.75rem + env(safe-area-inset-top, 0px));
+  }
+  @media (max-width: 767px) {
+    html {
+      scroll-padding-top: calc(7rem + env(safe-area-inset-top, 0px));
+    }
+  }
   * {
     @apply border-border;
   }
