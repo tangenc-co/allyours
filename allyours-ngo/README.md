@@ -218,6 +218,8 @@ This repo is configured for **[OpenNext’s Cloudflare adapter](https://opennext
 - One-shot: `npm run deploy` (runs `opennextjs-cloudflare build` then `wrangler deploy`).  
 - Requires [Wrangler](https://developers.cloudflare.com/workers/wrangler/) auth (`wrangler login`).
 
+**`next dev` and Miniflare:** By default, OpenNext’s `initOpenNextCloudflareForDev` is **not** run, so `npm run dev` uses normal Node and your APIs (e.g. members) work without starting the Workers dev runtime. If you see SQLite / Miniflare errors in the terminal, they come from that optional stack conflicting with another process; data still loads because routes use **Node + Firebase**, not Miniflare. To enable Cloudflare bindings during `next dev`, set **`OPENNEXT_CLOUDFLARE_DEV=1`** in `.env.local` (only when you need it).
+
 **Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/)**
 
 1. Create or use a **Workers** project (not a static **Pages** site expecting a folder upload).  

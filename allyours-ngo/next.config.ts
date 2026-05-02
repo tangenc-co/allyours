@@ -1,9 +1,14 @@
 import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
 import type { NextConfig } from 'next'
 
-// Only for `next dev`. On `next build` (e.g. Vercel) this would spawn Wrangler/miniflare
-// and can fail with EPIPE when the adapter thinks dev context init should run.
-if (process.env.NODE_ENV !== 'production') {
+// Optional: only when testing Cloudflare Workers locally (`npm run preview` stack).
+// Starting Miniflare on every `next dev` can log SQLITE_BUSY / ERR_RUNTIME_FAILURE while the
+// Node dev server still works fine — APIs use Firebase in Node, not the Workers stub.
+if (
+  process.env.NODE_ENV !== 'production' &&
+  (process.env.OPENNEXT_CLOUDFLARE_DEV === '1' ||
+    process.env.OPENNEXT_CLOUDFLARE_DEV === 'true')
+) {
   initOpenNextCloudflareForDev()
 }
 
