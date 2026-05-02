@@ -28,7 +28,7 @@ Production landing and fundraising experience for **Allyours NGO**, built with *
 
 ## Prerequisites
 
-- **Node.js** 18 or newer  
+- **Node.js** 20 
 - **npm** (or pnpm / yarn)  
 - A **Firebase** project with Firestore (and Authentication if you use admin)  
 - Optional: **Cloudinary** account for image uploads  

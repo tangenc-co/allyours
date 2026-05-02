@@ -13,11 +13,11 @@ export default function Hero() {
         </p>
         <div className='flex justify-around max-w-[302px] md:max-w-[400px] mx-auto'>
           <button className='py-[10px] px-[14px]  rounded-[24px] border-none w-[166px] md:w-[183px] h-[45px] md:h-[47px] cursor-pointer text-[#fff] bg-[#005cff] hover:bg-[#337DFF] active:bg-[#0041B5] text-[14px] md:text-[16px]/auto'>
-            Join Our Programs
+           <a target='blank' href="https://build.fillout.com/editor/x1SrEBquRXus/edit">Join Our Programs</a>
           </button>
           <button className='rounded-[24px] border-[1px] border-solid border-[#b6b6b6] w-[120px] md:w-[183px] h-[45px] md:h-[47px] cursor-pointer text-[#000] bg-[#fff] hover:bg-[#E8E8E8] active:bg-[#B6B6B6] text-[14px] md:text-[16px]'>
 
-            Learn More
+           <a target='blank' href="https://drive.google.com/drive/folders/1OCkX5vyCn5puwGBSKBWymlUxseRFpTR-">Learn More</a> 
           </button>
         </div>
       </div>

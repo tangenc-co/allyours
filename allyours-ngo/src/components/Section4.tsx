@@ -72,7 +72,7 @@ export default function Section4() {
             return (
               <a
                 key={ep.id}
-                href={href}
+                href="https://youtu.be/L1Z5PPa1TVM?si=rYBlii9eexrJtC9l"
                 target='_blank'
                 rel='noopener noreferrer'
                 className='w-[353px] xl:w-[520px] max-h-[100px] xl:max-h-[162px] rounded-[24px] p-[14px] xl:p-[24px] bg-[#F9F9F9] flex border border-[#b6b6b6] hover:border-[#AA16FF] transition-colors'
@@ -105,7 +105,7 @@ export default function Section4() {
         </div>
         <div className='mx-auto flex items-center mt-[24px]'>
           <a
-            href={channelUrl}
+            href="https://youtube.com/@peekaboobyallyours?si=d1Fm4PqQkNtHiznq"
             target='_blank'
             rel='noopener noreferrer'
             className='py-[10px] px-[14px] rounded-[24px] border-none w-[183px] h-[47px] cursor-pointer text-[#fff] bg-[#AA16FF] hover:bg-[#BB45FF] active:bg-[#7910B5] text-[16px]/auto mx-auto sfprorg act inline-flex items-center justify-center no-underline'

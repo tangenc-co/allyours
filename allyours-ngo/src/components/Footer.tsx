@@ -4,9 +4,10 @@ import Link from 'next/link'
 import allyourslogo from '../../public/assets/Images/all yours-01_cropped.png'
 import Facebook from '../../public/assets/Icons.SVG/Socials/Facebook.svg'
 import Instagram from '../../public/assets/Icons.SVG/Socials/Instagram.svg'
-import X from '../../public/assets/Icons.SVG/Socials/X.svg'
 import Linkedin from '../../public/assets/Icons.SVG/Socials/Linkedin.svg'
 import Youtube from '../../public/assets/Icons.SVG/Socials/Youtube.svg'
+
+
 
 export default function Footer() {
   return (
@@ -31,7 +32,7 @@ export default function Footer() {
                 placeholder='Enter your email'
               />
               <button className='bg-[#f9f9f9] w-[121px] h-[48px] rounded-[32px] border border-[#b6b6b6] hover:bg-[#E8E8E8] active:bg-[#B6B6B6] text-[16px] text-[#151515] sfprorg sm:ml-[15px] ml-[10px]'>
-                Subscribe
+                <a target='blank' href="https://substack.com/@allyours1">Subscribe</a>
               </button>
             </div>
             <p className='text-[12px] sfprorg mt-[10px] text-[#f9f9f9] tracking-wide w-[300px]'>
@@ -64,39 +65,40 @@ export default function Footer() {
             <Link href='/' className='sfprorg text-[16px]'>
               Team Journey
             </Link>
-            <Link href='/' className='sfprorg text-[16px]'>
+            <Link href='/#section6' className='sfprorg text-[16px]'>
               Meet the team
             </Link>
             <Link href='/' className='sfprorg text-[16px]'>
               Team JDs
             </Link>
-            <Link href='/' className='sfprorg text-[16px]'>
+            <Link href='/#section7' className='sfprorg text-[16px]'>
               Our Achievements
             </Link>
-            <Link href='/' className='sfprorg text-[16px]'>
+            <Link href="https://build.fillout.com/editor/x1SrEBquRXus/edit" className='sfprorg text-[16px]'>
               Become a Volunteer
             </Link>
           </div>
           <div className='flex flex-col space-y-[16px] min-w-[150px]'>
             <h2 className='morangarg text-[24px]'>Follow Us</h2>
-            <Link href='/' className='sfprorg text-[16px] flex items-center'>
+            <Link href="https://dub.sh/allyoursfb" className='sfprorg text-[16px] flex items-center'>
               <Image src={Facebook} alt='Facebook' width={24} height={24} className='mr-[10px]' />
               Facebook
             </Link>
-            <Link href='/' className='sfprorg text-[16px] flex items-center'>
+            <Link href="https://dub.sh/allyoursInsta" className='sfprorg text-[16px] flex items-center'>
               <Image src={Instagram} alt='Instagram' width={24} height={24} className='mr-[10px]' />
               Instagram
             </Link>
-            <Link href='/' className='sfprorg text-[16px] flex items-center'>
-              <Image src={X} alt='X (Twitter)' width={24} height={24} className='mr-[10px]' />X
-            </Link>
-            <Link href='/' className='sfprorg text-[16px] flex items-center'>
+
+            <Link href="https://dub.sh/allyoursLinkedin" className='sfprorg text-[16px] flex items-center'>
               <Image src={Linkedin} alt='LinkedIn' width={24} height={24} className='mr-[10px]' />
               LinkedIn
             </Link>
-            <Link href='/' className='sfprorg text-[16px] flex items-center'>
+            <Link href="https://youtube.com/@peekaboobyallyours?si=d1Fm4PqQkNtHiznq" className='sfprorg text-[16px] flex items-center'>
               <Image src={Youtube} alt='YouTube' width={24} height={24} className='mr-[10px]' />
               YouTube
+            </Link>
+            <Link href="https://dub.sh/allyourstiktok" className='sfprorg text-[16px>] flex items-center'>
+              <Image src={Youtube} alt='Tiktok' width={24} height={24} className='mr-[10px]'/>
             </Link>
           </div>
         </div>
