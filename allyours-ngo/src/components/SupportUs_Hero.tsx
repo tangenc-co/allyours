@@ -1,15 +1,4 @@
 'use client'
-import Image from 'next/image'
-import Link from 'next/link'
-import leftblob from '../../public/assets/Illustration.SVG/leftblob-SupportUs.svg'
-import rightblob from '../../public/assets/Illustration.SVG/rightblob-SupportUs.svg'
-import tbleftblob from '../../public/assets/Illustration.SVG/tbleftblob-SupportUs.svg'
-import tbrightblob from '../../public/assets/Illustration.SVG/tbrightblob-SupportUs.svg'
-import MouseIcon from '../../public/assets/IconComponents/IconComponents'
-import Upload from '../../public/assets/Icons.SVG/Outline Icons/Upload icon.svg'
-import RemoveIcon from '../../public/assets/Icons.SVG/Fill Icons/Vector.svg'
-import TickCircle from '../../public/assets/Icons.SVG/Fill Icons/tick-circle.svg'
-import { Switch } from '@/components/ui/switch'
 import {
   Dialog,
   DialogContent,
@@ -18,9 +7,20 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { useState, ChangeEvent, FormEvent } from 'react'
-import { uploadImageToCloudinary } from '@/services/cloudinary'
+import { Switch } from '@/components/ui/switch'
 import { trackDonationIntent, trackSupportCta } from '@/services/analytics'
+import { uploadImageToCloudinary } from '@/services/cloudinary'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import MouseIcon from '../../public/assets/IconComponents/IconComponents'
+import RemoveIcon from '../../public/assets/Icons.SVG/Fill Icons/Vector.svg'
+import TickCircle from '../../public/assets/Icons.SVG/Fill Icons/tick-circle.svg'
+import Upload from '../../public/assets/Icons.SVG/Outline Icons/Upload icon.svg'
+import leftblob from '../../public/assets/Illustration.SVG/leftblob-SupportUs.svg'
+import rightblob from '../../public/assets/Illustration.SVG/rightblob-SupportUs.svg'
+import tbleftblob from '../../public/assets/Illustration.SVG/tbleftblob-SupportUs.svg'
+import tbrightblob from '../../public/assets/Illustration.SVG/tbrightblob-SupportUs.svg'
 
 interface DonatorData {
   donatorName: string
@@ -184,6 +184,13 @@ export default function SupportUsHero() {
                   <form onSubmit={handleSubmit}>
                     <div className='grid gap-4'>
                       <div className='grid gap-2'>
+                        {/* QR IMAGE */}
+                          <div className="qr-box">
+                            <img src="/qr.jpg" alt="Payment QR" className="w-[180px] h-[180px] object-contain mx-auto rounded-lg"></img>
+                            <p className="text-sm font-medium text-gray-600 text-center"> 
+                              Scan this QR
+                            </p>
+                          </div>
                         <label htmlFor='donatorName' className='sfprobold text-[#151515] text-[16px] tracking-wide'>
                           Your Name
                         </label>
