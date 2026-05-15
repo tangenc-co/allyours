@@ -188,7 +188,7 @@ export default function SupportUsHero() {
                           <div className="qr-box">
                             <img src="/qr.jpg" alt="Payment QR" className="w-[180px] h-[180px] object-contain mx-auto rounded-lg"></img>
                             <p className="text-sm font-medium text-gray-600 text-center"> 
-                              Scan this QR
+                              Scan this QR To Donate
                             </p>
                           </div>
                         <label htmlFor='donatorName' className='sfprobold text-[#151515] text-[16px] tracking-wide'>
